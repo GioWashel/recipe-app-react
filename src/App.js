@@ -11,9 +11,8 @@ function App() {
   return (
     <div className="App">
       {
-        <SearchBar/>
-        //if the current form is the login page, then we could 
-        //currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm} />
+        //<SearchBar/>
+        currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm} />
 
 
       }
