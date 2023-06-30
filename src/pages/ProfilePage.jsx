@@ -11,7 +11,7 @@ export const Profile = () => {
                 <div className="user">
                         <div className="name">
                             <FaUser className="icon" id="user-icon"/> 
-                            <span>Jane Doe</span>
+                            <span className="span">Jane Doe</span>
                         </div>
                     <div className="email"><FaMailBulk className="icon" id="mail-icon"/> <span>JaneDoe@gmail.com</span></div>
                 </div>
@@ -19,7 +19,7 @@ export const Profile = () => {
             <div className="saved-recipes">
                 <div className="message">
                     <span>Recipes you save will appear here</span>
-                    <button className="to-recipes">Explore recipes</button>
+                    <a href="/explore"> <button className="to-recipes" >Explore recipes</button> </a>
                 </div>
                 <div className="recipe-card"></div>
             </div>

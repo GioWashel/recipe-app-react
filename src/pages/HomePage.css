@@ -1,0 +1,18 @@
+
+
+.home h3 {
+    color: azure;
+}
+
+.links {
+    margin-top: 10%;
+}
+
+.home a {
+    text-decoration: none;
+    color: rgb(238, 242, 250);
+    display: block;
+    text-align: left;
+    margin: .4rem;
+}
+
