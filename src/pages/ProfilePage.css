@@ -1,3 +1,16 @@
+.App {
+
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-page {
+ 
+    padding: 10%;
+}
+
 .profile-info {
     display: flex;
     gap: 35px;
@@ -6,16 +19,64 @@
 
 .profile-pic-container {
     background-image: url("https://images.unsplash.com/photo-1604072366595-e75dc92d6bdc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80");
-    width: 300px;
-    height: 300px;
+    width: 10rem;
+    height: 10rem;
     background-position: 45% 40%;
     border-radius: 50%;
+    background-size: cover;
 }
 
 .user {
     align-self: center;
 }
 
+.name {
+    margin-bottom: 1rem;
+}
+
 span {
     color: white;
+}
+
+.icon {
+    color: rgb(146, 255, 219);
+    padding-right: .8rem;
+}
+
+.saved-recipes {
+    width: 100%;
+    padding-top: 4rem;
+    background-color: rgba(6, 179, 29, 0);
+}
+
+.message {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    
+}
+
+.message > span {
+    /* color: green; */
+    display: block;
+    align-self: center;
+    
+}
+
+
+.to-recipes {
+    display: block;
+    background-color: rgba(240, 248, 255, 0);
+    border-radius: 30px;
+    padding: 10px 15px;
+ 
+}
+
+.recipe-card {
+    box-sizing: content-box;
+    margin: 2% auto;
+    width: 100%;
+    min-height: 30px;
+    background-color: aliceblue;
+    /* padding: 0px 30px; */
 }
