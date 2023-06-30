@@ -1,6 +1,6 @@
 .App {
 
-    text-align: center;
+    text-align: initial;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +24,10 @@
     background-position: 45% 40%;
     border-radius: 50%;
     background-size: cover;
+    box-shadow: 1.5px 1.5px 10px rgba(0, 0, 0, 0.247), -1.0px 1.5px 10px rgba(0, 0, 0, 0.212);
 }
+
+
 
 .user {
     align-self: center;
@@ -34,7 +37,7 @@
     margin-bottom: 1rem;
 }
 
-span {
+.profile-page  span {
     color: white;
 }
 
