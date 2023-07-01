@@ -9,7 +9,7 @@ export const Home = () => {
         <div className="home">
 
             <div className="left-home">
-            <h1>So, what Are you planning to eat?</h1>
+            <h1>So, what are you planning to eat?</h1>
             <h1>We have got you covered!</h1>
             <SearchBar/>
             </div>
