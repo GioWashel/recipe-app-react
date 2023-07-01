@@ -5,6 +5,7 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Profile } from "./pages/ProfilePage";
 import { DetailPage } from "./pages/DetailPage";
+import {NavBar} from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -15,15 +16,15 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <NavBar/>
         <Routes>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/details" element={<DetailPage />}></Route>
         </Routes>
-      </BrowserRouter>
     </div>
 
     // currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />

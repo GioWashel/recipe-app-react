@@ -1,5 +1,43 @@
-.search-wrapper {
-    background-color: white;
-    width: 4000px;
+
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: transparent;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    
+}
+li {
+    display: inline;
+    list-style: none;
+    display: inline-block;
+    padding: 0px 20px;
+    transition: all 0.3s ease 0s;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+#login-button {
+    background-color: var(--red);
+    width: 200px;
+    height: 50px;
+    border: none;
+    font-size: 16px;
+    color: white;
     border-radius: 10px;
+    margin-right: 10px;
+}
+
+.links:hover {
+    color: black;
+}
+#logo {
+    margin-left: 10px;
+}
+.links {
+    color: var(--gray);
+    text-decoration: none;
 }
