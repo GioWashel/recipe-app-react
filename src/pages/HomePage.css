@@ -1,6 +1,14 @@
 
-
-.home h3 {
+.home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.left-home {
+    margin-right: 200px;
+    margin-top: 20px;
+}
+.home h1 {
     color: azure;
 }
 

@@ -1,16 +1,18 @@
 .App {
-  text-align: center;
-  display: flex;
   min-height: 100vh;
-  align-items: center;
-  justify-content: center;
   --dark-gray: #35393C;
   --dark-cyan: #42858C;
   --keppel: #48a194;
   --bright-blue: #63CCCA;
   --hookers-green: #397367;
+  --red: #e76666;
+  --darker-red: #f35252;
+  --yellow: #f0d582;
+  --orange: #e5a478;
+  --purple: #5e4e4e;
+  --gray: #616265;
   color: var(--darkish-green, #397367);
-  background-image: linear-gradient(#42858C, #35393C);
+  background-image: linear-gradient(var(--yellow), var(--red));
 }
 
 
