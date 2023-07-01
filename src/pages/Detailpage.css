@@ -1,0 +1,18 @@
+.recipe {
+  background-color: white;
+  margin: 10vw;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  color: black;
+  border-radius: 8px;
+}
+
+.recipe .title {
+  margin-top: 0;
+}
+
+.recipe img {
+  width: 100%;
+  border-radius: 8px;
+}
