@@ -34,37 +34,43 @@ export const DetailPage = () => {
         <h2 className="title">{recipeTitle}</h2>
         <div className="serving">
           <h3>Serving</h3>
-          {serving}
+          <p>{serving}</p>
         </div>
         <div className="ingredients">
           <h3>Ingredients</h3>
           <ul>
             {ingredients.map((item, index) => (
               <li key={index}>
-                <label htmlFor={`ingredient-${index}`}>{item}</label>
-                <input
-                  type="checkbox"
-                  name={`ingredient-${index}`}
-                  id={`ingredient-${index}`}
-                />
+                <label htmlFor={`ingredient-${index}`}>
+                  <p>{item}</p>
+                  <input
+                    type="checkbox"
+                    name={`ingredient-${index}`}
+                    id={`ingredient-${index}`}
+                  />
+                  <div class="check-mark"></div>
+                </label>
               </li>
             ))}
           </ul>
         </div>
         <div className="instructions">
           <h3>Instructions</h3>
-          <ol>
+          <ul>
             {instructions.map((item, index) => (
               <li key={index}>
-                <label htmlFor={`ingredient-${index}`}>{item}</label>
-                <input
-                  type="checkbox"
-                  name={`ingredient-${index}`}
-                  id={`ingredient-${index}`}
-                />
+                <label htmlFor={`instruction-${index}`}>
+                  <p>{item}</p>
+                  <input
+                    type="checkbox"
+                    name={`instruction-${index}`}
+                    id={`instruction-${index}`}
+                  />
+                  <div class="check-mark"></div>
+                </label>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       </div>
     </div>
