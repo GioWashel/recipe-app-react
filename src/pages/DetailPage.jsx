@@ -26,47 +26,45 @@ export const DetailPage = () => {
   //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   return (
-    <div className="recipe-container">
-      <div className="recipe">
-        <div className="img-container">
-          <img src={recipeImageURL} alt={recipeTitle} />
+    <div className="recipe">
+      <div className="img-container">
+        <img src={recipeImageURL} alt={recipeTitle} />
+      </div>
+      <div className="details">
+        <h2 className="title">{recipeTitle}</h2>
+        <div className="serving">
+          <h3>Serving</h3>
+          {serving}
         </div>
-        <div className="details">
-          <h2 className="title">{recipeTitle}</h2>
-          <div className="serving">
-            <h3>Serving</h3>
-            {serving}
-          </div>
-          <div className="ingredients">
-            <h3>Ingredients</h3>
-            <ul>
-              {ingredients.map((item, index) => (
-                <li key={index}>
-                  <label htmlFor={`ingredient-${index}`}>{item}</label>
-                  <input
-                    type="checkbox"
-                    name={`ingredient-${index}`}
-                    id={`ingredient-${index}`}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="instructions">
-            <h3>Instructions</h3>
-            <ol>
-              {instructions.map((item, index) => (
-                <li key={index}>
-                  <label htmlFor={`ingredient-${index}`}>{item}</label>
-                  <input
-                    type="checkbox"
-                    name={`ingredient-${index}`}
-                    id={`ingredient-${index}`}
-                  />
-                </li>
-              ))}
-            </ol>
-          </div>
+        <div className="ingredients">
+          <h3>Ingredients</h3>
+          <ul>
+            {ingredients.map((item, index) => (
+              <li key={index}>
+                <label htmlFor={`ingredient-${index}`}>{item}</label>
+                <input
+                  type="checkbox"
+                  name={`ingredient-${index}`}
+                  id={`ingredient-${index}`}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="instructions">
+          <h3>Instructions</h3>
+          <ol>
+            {instructions.map((item, index) => (
+              <li key={index}>
+                <label htmlFor={`ingredient-${index}`}>{item}</label>
+                <input
+                  type="checkbox"
+                  name={`ingredient-${index}`}
+                  id={`ingredient-${index}`}
+                />
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </div>
