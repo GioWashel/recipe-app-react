@@ -1,18 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+* {
+  --color1: #f7a813;
+  --color2: #fdf323;
+  --color3: #f464aa;
+}
+
 .recipe {
+  display: grid;
+  grid-template-columns: 50% 50%;
   background-color: white;
-  margin: 10vw;
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
+  width: 70vw;
+  height: 80vh;
   color: black;
   border-radius: 8px;
+  overflow: hidden;
+
+  font-family: 'Alegreya', serif;
 }
 
 .recipe .title {
   margin-top: 0;
 }
 
+.img-container {
+  overflow: hidden;
+}
+
 .recipe img {
-  width: 100%;
-  border-radius: 8px;
+  height: 100%;
+}
+
+.details {
+  padding: 1rem;
+  overflow-y: scroll;
+}
+
+ul, ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin: 0.25rem;
+}
+
+li:hover {
+  background-color: var(--color3);
+  color: white;
+}
+
+[type="checkbox"] {
+  background-color: var(--color3);
 }

@@ -14,8 +14,8 @@ export const Home = () => {
                 <Link to="/login">Login</Link>
                 <Link to="/register">Register</Link>
                 <Link to="/profile">Profile<span>Assigned to coronel</span></Link> 
-                <Link to="/details">Show Recipe in Detail<span>Assigned, Not started</span></Link> 
-                <Link to="/explore">Explore Recipes<span>Unnasigned</span></Link> 
+                <Link to="/details">Show Recipe in Detail<span>Assigned</span></Link> 
+                <Link to="/explore">Explore Recipes<span>Unassigned</span></Link> 
                 <Link to="/create">Create a New Recipe<span>Assigned, Not started</span></Link> 
             </div>
         </div>

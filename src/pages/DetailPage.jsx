@@ -1,9 +1,9 @@
-import React from "react";
 import "./Detailpage.css";
 
 export const DetailPage = () => {
   // testing data ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   const recipeTitle = `Spaghetti Carbonara`;
+  const recipeImageURL = `https://th.bing.com/th/id/R.a0246b9032f0cd5338d8391642d8bcf1?rik=B8NK%2biKQg0zVmg&riu=http%3a%2f%2fwww.casaacorte.com%2fwp-content%2fuploads%2f2014%2f01%2fCarbonara-pepper-web.jpg&ehk=cJqi017Y10hmUui9pXcu3tNrn%2blKjkDpSwktNMz0cx4%3d&risl=&pid=ImgRaw&r=0`;
   const ingredients = [
     `1 pound spaghetti.`,
     `6 ounces pancetta or bacon, diced.`,
@@ -26,38 +26,49 @@ export const DetailPage = () => {
   //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   return (
-    <>
+    <div className="recipe-container">
       <div className="recipe">
-        <h2 className="title">{recipeTitle}</h2>
-
-        <img
-          src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt={`${recipeTitle}`}
-        />
-
-        <div className="ingredients">
-          <h3>Ingredients</h3>
-          <ul>
-            {ingredients.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
+        <div className="img-container">
+          <img src={recipeImageURL} alt={recipeTitle} />
         </div>
-
-        <div className="serving">
-          <h3>Serving</h3>
-          {serving}
-        </div>
-
-        <div className="instructions">
-          <h3>Instructions</h3>
-          <ol>
-            {instructions.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ol>
+        <div className="details">
+          <h2 className="title">{recipeTitle}</h2>
+          <div className="serving">
+            <h3>Serving</h3>
+            {serving}
+          </div>
+          <div className="ingredients">
+            <h3>Ingredients</h3>
+            <ul>
+              {ingredients.map((item, index) => (
+                <li key={index}>
+                  <label htmlFor={`ingredient-${index}`}>{item}</label>
+                  <input
+                    type="checkbox"
+                    name={`ingredient-${index}`}
+                    id={`ingredient-${index}`}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="instructions">
+            <h3>Instructions</h3>
+            <ol>
+              {instructions.map((item, index) => (
+                <li key={index}>
+                  <label htmlFor={`ingredient-${index}`}>{item}</label>
+                  <input
+                    type="checkbox"
+                    name={`ingredient-${index}`}
+                    id={`ingredient-${index}`}
+                  />
+                </li>
+              ))}
+            </ol>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
