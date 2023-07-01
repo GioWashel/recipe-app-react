@@ -23,6 +23,10 @@
   margin-top: 0;
 }
 
+.title {
+  text-align: center;
+}
+
 .img-container {
   overflow: hidden;
 }
