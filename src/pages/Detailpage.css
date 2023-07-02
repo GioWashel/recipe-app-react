@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-* {
-  --color1: #f7a813;
-  --color2: #fdf323;
-  --color3: #f464aa;
+.recipe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .recipe {
@@ -40,25 +41,28 @@
   overflow-y: scroll;
 }
 
-ul {
+.recipe ul {
+  display: grid;
+  grid-template-columns: 1fr;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-li {
+.recipe li {
+  text-align: center;
   padding: 0rem 0.5rem;
   border-radius: 6px;
   margin: 0.25rem;
 }
 
-li:hover {
-  background-color: var(--color3);
+.recipe li:hover {
+  background-color: var(--hot-pink);
   color: white;
 }
 
 [type="checkbox"] {
-  background-color: var(--color3);
+  background-color: var(--hot-pink);
 }
 
 .serving p {
@@ -67,7 +71,7 @@ li:hover {
 }
 
 .serving p:hover {
-  background-color: var(--color3);
+  background-color: var(--hot-pink);
   color: white;
 }
 
@@ -85,7 +89,6 @@ label input {
 label {
   display: grid;
   grid-template-columns: 1fr 30px;
-  justify-content: space-between;
   align-items: center;
   position: relative;
   cursor: pointer;
@@ -107,7 +110,7 @@ label {
 
 /* When the checkbox is checked, add a blue background */
 label input:checked ~ .check-mark {
-  background-color: var(--color1);
+  background-color: var(--orange-web);
   animation: pop 0.5s;
   animation-direction: alternate;
 }

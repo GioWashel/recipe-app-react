@@ -1,70 +1,83 @@
-.auth-form-container, .forms {
-    display: flex;
-    flex-direction: column;
-  }
-  .auth-form-container {
-    position: relative;
-    background: white;
-    padding: 100px 100px 30px 100px;
-    align-items: center;
-    width: 300px;
-    font-size: 14px;
-    border-radius: 5px;
-    margin-bottom: 30px;
-  }
-  
-  
-  #top-h1 {
-    position: absolute;
-    top: 2%;
-    margin-bottom: 30px;
-    border-bottom: 1px solid silver;
-    color: black;
-  }
-  .login-button {
-    background-color: var(--red);
-    width: 100% ;
-    display: block;
-    padding: 16px;
-    border: none;
-    font-size: 16px;
-    margin-bottom: 30px;
-    color: white;
-  }
-  .login-button:hover {
-    background: var(--darker-red);
-    transition: 0.3s;
-  }
-  .form-input{
-    font-size: 16px;
-    outline: none;
-    border: 2px solid lightgray;
-    padding: 16px;
-    margin-bottom: 30px;
-    border-radius: 2px;
-    width: 300px;
-    transition: all 0.3s ease;
-  }
-  .form-input[type='text']:hover, .form-input[type='email']:hover, .form-input[type='password']:hover{
-    border: 2px solid black;
-  }
-  .form-input[type='text']:active, .form-input[type='email']:active, .form-input[type='password']:active{
-    border: 2px solid black;
-  }
-  .form-input[type='text']:focus, .form-input[type='email']:focus, .form-input[type='password']:focus{
-    border: 2px solid black;
-  }
-  .link-button {
-    background: none;
-    color: black;
-    text-decoration: underline;
-    width: 100% ;
-    display: block;
-    padding: 16px;
-    border: none;
-    font-size: 16px;
-    margin-bottom: 30px;
-  }
-  .link-button:hover {
-    color: lightblue;
-  }
+.login-register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.auth-form-container,
+.forms {
+  display: flex;
+  flex-direction: column;
+}
+.auth-form-container {
+  position: relative;
+  background: white;
+  padding: 100px 100px 30px 100px;
+  align-items: center;
+  width: 300px;
+  font-size: 14px;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+#top-h1 {
+  position: absolute;
+  top: 2%;
+  margin-bottom: 30px;
+  border-bottom: 1px solid silver;
+  color: black;
+}
+.login-button {
+  background-color: var(--red);
+  width: 100%;
+  display: block;
+  padding: 16px;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 30px;
+  color: white;
+}
+.login-button:hover {
+  background: var(--darker-red);
+  transition: 0.3s;
+}
+.form-input {
+  font-size: 16px;
+  outline: none;
+  border: 2px solid lightgray;
+  padding: 16px;
+  margin-bottom: 30px;
+  border-radius: 2px;
+  width: 300px;
+  transition: all 0.3s ease;
+}
+.form-input[type="text"]:hover,
+.form-input[type="email"]:hover,
+.form-input[type="password"]:hover {
+  border: 2px solid black;
+}
+.form-input[type="text"]:active,
+.form-input[type="email"]:active,
+.form-input[type="password"]:active {
+  border: 2px solid black;
+}
+.form-input[type="text"]:focus,
+.form-input[type="email"]:focus,
+.form-input[type="password"]:focus {
+  border: 2px solid black;
+}
+.link-button {
+  background: none;
+  color: black;
+  text-decoration: underline;
+  width: 100%;
+  display: block;
+  padding: 16px;
+  border: none;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+.link-button:hover {
+  color: lightblue;
+}
