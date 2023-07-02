@@ -1,26 +1,10 @@
-
 .home {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
 }
-.left-home {
-    margin-right: 200px;
-    margin-top: 20px;
-}
+
 .home h1 {
-    color: azure;
+  color: azure;
 }
-
-.links {
-    margin-top: 10%;
-}
-
-.home a {
-    text-decoration: none;
-    color: rgb(238, 242, 250);
-    display: block;
-    text-align: left;
-    margin: .4rem;
-}
-

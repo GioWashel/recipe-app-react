@@ -1,9 +1,9 @@
 .App {
   min-height: 100vh;
-  --dark-gray: #35393C;
-  --dark-cyan: #42858C;
+  --dark-gray: #35393c;
+  --dark-cyan: #42858c;
   --keppel: #48a194;
-  --bright-blue: #63CCCA;
+  --bright-blue: #63ccca;
   --hookers-green: #397367;
   --red: #e76666;
   --darker-red: #f35252;
@@ -11,10 +11,15 @@
   --orange: #e5a478;
   --purple: #5e4e4e;
   --gray: #616265;
-  color: var(--darkish-green, #397367);
+
+  /* color palette */
+  --pale-azure: #84dafaff;
+  --orange-web: #f7a813ff;
+  --hot-pink: #f464aaff;
+  --aureolin: #fdf323ff;
+  --tigers-eye: #ae6d1bff;
+  /* ------------------ */
+
+  color: var(--darkish-green, --hookers-green);
   background-image: linear-gradient(var(--yellow), var(--red));
 }
-
-
-
-
