@@ -7,6 +7,8 @@ import { Profile } from "./pages/ProfilePage";
 import { DetailPage } from "./pages/DetailPage";
 import {NavBar} from "./components/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { RecipeCard } from "./components/RecipeCard";
+import { ExplorePage } from "./pages/ExplorePage";
 
 function App() {
   // const [currentForm, setCurrentForm] = useState('login');
@@ -38,6 +40,7 @@ function App() {
       `Serve the spaghetti carbonara hot, garnished with additional Parmesan cheese and chopped parsley if desired.`,
     ],
   };
+
   //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   return (
@@ -53,7 +56,8 @@ function App() {
             path="/details"
             element={<DetailPage recipe={recipe} />}
           ></Route>
-        </Routes>
+          <Route path="/explore" element={<ExplorePage/>}></Route>
+          </Routes>
     </div>
 
     // currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />

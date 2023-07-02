@@ -7,15 +7,11 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email);
-  };
   return (
     <div className="login-register-container">
       <div className="auth-form-container">
         <h1 id="top-h1">Sign Up</h1>
-        <form className="forms" onSubmit={handleSubmit}>
+        <form className="forms" >
           <input
             className="form-input"
             value={name}

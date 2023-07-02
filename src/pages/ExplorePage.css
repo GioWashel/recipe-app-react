@@ -1,0 +1,11 @@
+.recipe-list-container {
+   
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    position: fixed;
+    top: 50%;
+
+}

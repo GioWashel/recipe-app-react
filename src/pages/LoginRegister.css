@@ -9,6 +9,9 @@
 .forms {
   display: flex;
   flex-direction: column;
+  
+
+
 }
 .auth-form-container {
   position: relative;
@@ -19,6 +22,7 @@
   font-size: 14px;
   border-radius: 5px;
   margin-bottom: 30px;
+
 }
 
 #top-h1 {
