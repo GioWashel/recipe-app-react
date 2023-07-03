@@ -1,11 +1,6 @@
 .recipe-list-container {
-   
-    display: grid;
-    justify-content: center;
-    align-items: center;
-
-    width: 100%;
-    position: fixed;
-    top: 50%;
-
+  padding: 7rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
 }
