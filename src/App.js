@@ -23,7 +23,6 @@ function App() {
     }
     fetchData();
   },[]);
-  const [recipe, setRecipe] = useState(recipes[0]);
 
   return (
     <div className="App">
@@ -34,10 +33,10 @@ function App() {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
-        <Route path="/details" element={<DetailPage recipe={recipe} />}></Route>
+        <Route path={`/recipe/:slug`} element={<DetailPage />}></Route>
         <Route
           path="/explore"
-          element={<ExplorePage recipes={recipes} setRecipe={setRecipe} />}
+          element={<ExplorePage recipes={recipes}/>}
         ></Route>
       </Routes>
     </div>
