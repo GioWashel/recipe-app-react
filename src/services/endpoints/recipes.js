@@ -1,27 +1,27 @@
 import { get, post, put, del } from "../utils/request";
 
-const basicRoute = "/recipes";
+const basicRoute = "/recipe";
 // function fetch recipes
 export const fetchRecipes = () => {
-  return get(basicRoute);
+  return get(`${basicRoute}s/`);
 };
 
 // function to create recipes
 export const createRecipe = (data) => {
-  return post(basicRoute, data);
+  return post(`${basicRoute}s/`, data);
 };
 
 // function to get recipe details
-export const fetchRecipeDetail = (recipeId) => {
-  return get(`${basicRoute}/${recipeId}`);
+export const fetchRecipeDetail = (slug) => {
+  return get(`${basicRoute}/${slug}`);
 };
 
 // function to update recipe
-export const updateRecipe = (recipeId, data) => {
-  return put(`${basicRoute}/${recipeId}`, data);
+export const updateRecipe = (slug, data) => {
+  return put(`${basicRoute}/${slug}`, data);
 };
 
 // function to delete recipe
-export const deleteRecipe = (recipeId) => {
-  return del(`${basicRoute}/${recipeId}`);
+export const deleteRecipe = (slug) => {
+  return del(`${basicRoute}/${slug}`);
 };
