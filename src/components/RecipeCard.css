@@ -1,0 +1,48 @@
+.card {
+  box-sizing: border-box;
+  width: 13rem;
+  height: 17rem;
+  background: rgba(217, 217, 217, 0.58);
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+  font-weight: bolder;
+  color: white;
+}
+
+.card:hover {
+  border: 1px solid var(--tigers-eye);
+  transform: scale(1.05);
+}
+
+.card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+#recipe-image {
+  object-fit: cover;
+  height: 100%;
+}
+
+#title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 100;
+}
+
+.gradient-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent, transparent, var(--hot-pink));
+}

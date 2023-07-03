@@ -1,25 +1,21 @@
 import React from "react";
-import './HomePage.css';
-import {Link} from 'react-router-dom';
-import { SearchBar } from "../components/SearchBar";
+import "./HomePage.css";
+import { Login } from "./Login";
 
+import { SearchBar } from "./SearchBar";
 export const Home = () => {
-    return (
-        <div className="home">
-            <SearchBar />
-            <div className="links">
-                <h3>Temporary Links for dev purposes</h3>
-                
-                <Link to="/" >Home <span>You are here</span></Link>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
-                <Link to="/profile">Profile<span>Assigned to coronel</span></Link> 
-                <Link to="/details">Show Recipe in Detail<span>Assigned, Not started</span></Link> 
-                <Link to="/explore">Explore Recipes<span>Unnasigned</span></Link> 
-                <Link to="/create">Create a New Recipe<span>Assigned, Not started</span></Link> 
-            </div>
-        </div>
-    )
+  return (
+    <div className="home">
+      <div>
+        <h1>So, what are you planning to eat?</h1>
+        <h1>We have got you covered!</h1>
+        <SearchBar />
+      </div>
+      <div>
+        <Login />
+      </div>
+    </div>
+  );
 };
 
 export default Home;

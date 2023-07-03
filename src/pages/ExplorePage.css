@@ -1,0 +1,6 @@
+.recipe-list-container {
+  padding: 7rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}

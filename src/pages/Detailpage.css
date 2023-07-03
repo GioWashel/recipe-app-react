@@ -1,0 +1,151 @@
+.recipe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.recipe {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  background-color: white;
+  width: 70vw;
+  height: 80vh;
+  color: black;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 5rem;
+}
+
+.recipe .title {
+  margin-top: 0;
+}
+
+.title {
+  text-align: center;
+}
+
+.img-container {
+  overflow: hidden;
+}
+
+.recipe img {
+  height: 100%;
+}
+
+.details {
+  padding: 1rem;
+  overflow-y: scroll;
+}
+
+.recipe ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recipe li {
+  text-align: center;
+  padding: 0rem 0.5rem;
+  border-radius: 6px;
+  margin: 0.25rem;
+  transition: background-color 0.3s ease 0s; /* Modified transition property */
+}
+
+.recipe li:hover {
+  background-color: var(--hot-pink);
+  color: white;
+}
+
+[type="checkbox"] {
+  background-color: var(--hot-pink);
+}
+
+.serving p {
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.serving p:hover {
+  background-color: var(--hot-pink);
+  color: white;
+}
+
+/* cool checkbox style */
+
+/* Hide the default checkbox */
+label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+label {
+  display: grid;
+  grid-template-columns: 1fr 30px;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+}
+
+/* Create a custom checkbox */
+.check-mark {
+  position: relative;
+  top: 0;
+  left: 0.5rem;
+  height: 1.3em;
+  width: 1.3em;
+  background-color: #ccc;
+  transition: all 0.3s;
+  border-radius: 5px;
+}
+
+/* When the checkbox is checked, add a blue background */
+label input:checked ~ .check-mark {
+  background-color: var(--orange-web);
+  animation: pop 0.5s;
+  animation-direction: alternate;
+}
+
+/* Create the check-mark/indicator (hidden when not checked) */
+.check-mark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the check-mark when checked */
+label input:checked ~ .check-mark:after {
+  display: block;
+}
+
+/* Style the check-mark/indicator */
+label .check-mark:after {
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid white;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
