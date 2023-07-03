@@ -1,21 +1,14 @@
-import { useState } from "react";
 import "./App.css";
 import { Home } from "./pages/HomePage";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Profile } from "./pages/ProfilePage";
 import { DetailPage } from "./pages/DetailPage";
-import {NavBar} from "./components/NavBar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { RecipeCard } from "./components/RecipeCard";
+import { NavBar } from "./components/NavBar";
+import { Routes, Route } from "react-router-dom";
 import { ExplorePage } from "./pages/ExplorePage";
 
 function App() {
-  // const [currentForm, setCurrentForm] = useState('login');
-  // const toggleForm = (formName) => {
-  //   setCurrentForm(formName);
-  // }
-
   // Temporary testing data for dev purposes----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   const recipe = {
     name: `Spaghetti Carbonara`,
@@ -40,27 +33,24 @@ function App() {
       `Serve the spaghetti carbonara hot, garnished with additional Parmesan cheese and chopped parsley if desired.`,
     ],
   };
-
   //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   return (
     <div className="App">
-      <NavBar/>
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/home" element={<Home />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/register" element={<Register />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route
-            path="/details"
-            element={<DetailPage recipe={recipe} />}
-          ></Route>
-          <Route path="/explore" element={<ExplorePage/>}></Route>
-          </Routes>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
+        <Route path="/details" element={<DetailPage recipe={recipe} />}></Route>
+        <Route
+          path="/explore"
+          element={<ExplorePage recipe={recipe} />}
+        ></Route>
+      </Routes>
     </div>
-
-    // currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
   );
 }
 

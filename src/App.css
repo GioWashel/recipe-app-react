@@ -2,10 +2,9 @@
 
 * {
   font-family: "Alegreya", serif;
-
 }
-.App {
 
+.App {
   min-height: 100vh;
   --dark-gray: #35393c;
   --dark-cyan: #42858c;
