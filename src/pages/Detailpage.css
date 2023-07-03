@@ -14,7 +14,7 @@
   color: black;
   border-radius: 8px;
   overflow: hidden;
-  margin-top: 2rem;
+  margin-top: 5rem;
 }
 
 .recipe .title {
@@ -51,6 +51,7 @@
   padding: 0rem 0.5rem;
   border-radius: 6px;
   margin: 0.25rem;
+  transition: background-color 0.3s ease 0s; /* Modified transition property */
 }
 
 .recipe li:hover {

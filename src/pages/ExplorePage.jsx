@@ -6,29 +6,12 @@ import "./ExplorePage.css";
 //detail page for that card -gio
 
 //a card only holds the name and image
-export const ExplorePage = ({ recipe }) => {
+export const ExplorePage = ({ recipes, setRecipe }) => {
   return (
     <div className="recipe-list-container">
-      {/* Temporary testing cards for dev purposes */}
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      <RecipeCard recipe={recipe} />
-      {/* ---------------------------------------- */}
+      {recipes.map((recipe) => (
+        <RecipeCard recipe={recipe} setRecipe={setRecipe} />
+      ))}
     </div>
   );
 };
