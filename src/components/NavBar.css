@@ -8,16 +8,18 @@
   top: 0px;
   width: 100%;
 }
+
 li {
   display: inline;
   list-style: none;
   display: inline-block;
   padding: 0px 20px;
-  transition: all 0.3s ease 0s;
+  transition: color 0.3s ease 0s; /* Modified transition property */
   font-size: 20px;
   text-decoration: none;
   text-align: center;
 }
+
 #login-button {
   background-color: var(--red);
   width: 200px;
@@ -30,7 +32,7 @@ li {
 }
 
 .links:hover {
-  color: black;
+  color: var(--tigers-eye);
 }
 
 .logo-container {
@@ -48,6 +50,7 @@ li {
   height: 3vw;
   margin-bottom: 0.4vw;
 }
+
 .links {
   color: var(--gray);
   text-decoration: none;
@@ -55,4 +58,40 @@ li {
 
 .nav-links {
   margin: 1vw 40vw 0 0;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.4rem;
+}
+
+/* cool search bar style */
+
+.container-input {
+  position: relative;
+  top: 0.5rem;
+}
+
+.input {
+  width: 150px;
+  padding: 10px 0px 10px 40px;
+  border-radius: 9999px;
+  border: solid 1px var(--tigers-eye);
+  transition: all 0.2s ease-in-out;
+  outline: none;
+  opacity: 0.8;
+}
+
+.container-input svg {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translate(0, -50%);
+}
+
+.input:focus {
+  opacity: 1;
+  width: 250px;
+}
+
+.container-input svg {
+  stroke: var(--tigers-eye);
 }
