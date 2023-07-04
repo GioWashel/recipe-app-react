@@ -11,10 +11,12 @@ import { useEffect, useState } from "react";
 import { fetchRecipes } from "./services/endpoints/recipes";
 import { isAuth } from "./services/utils/isAuth";
 import { Create } from "./pages/Createpage";
+import Skeleton from "react-loading-skeleton";
 function App() {
   const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken"));
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken"));
   const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading ] = useState(true);
   // location change everytime user in different location
   const location = useLocation();
   //fetch data
@@ -43,10 +45,15 @@ function App() {
       }else{
         setAuthenticated(true);
       }
+      setLoading(false);
     }
     checkAuth();
   },[accessToken, location]);
-  // handle click to explore / profile / recipe
+  
+  // when checkAuth is still loading
+  if(loading){
+    return "";
+  }
   return (
     <div className="App">
       <NavBar />
