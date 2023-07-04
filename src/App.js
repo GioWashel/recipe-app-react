@@ -5,7 +5,7 @@ import { Register } from "./pages/Register";
 import { Profile } from "./pages/ProfilePage";
 import { DetailPage } from "./pages/DetailPage";
 import { NavBar } from "./components/NavBar";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate, useNavigate } from "react-router-dom";
 import { ExplorePage } from "./pages/ExplorePage";
 import { useEffect, useState } from "react";
 import { fetchRecipes } from "./services/endpoints/recipes";
@@ -14,6 +14,7 @@ function App() {
   const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken"));
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken"));
   const [authenticated, setAuthenticated] = useState(false);
+  // location change everytime user in different location
   const location = useLocation();
   //fetch data
   const [recipes, setRecipes] = useState([]);
@@ -44,6 +45,7 @@ function App() {
     }
     checkAuth();
   },[accessToken, location]);
+  // handle click to explore / profile / recipe
   return (
     <div className="App">
       <NavBar />
@@ -52,9 +54,9 @@ function App() {
         <Route path="/home" element={<Home />}></Route>
         <Route path="/login" element={<Login />} setAccessToken={setAccessToken}></Route>
         <Route path="/register" element={<Register />}></Route>
-        <Route path="/profile" element={<Profile />}></Route>
-        <Route path={`/recipe/:slug`} element={<DetailPage />}></Route>
-        <Route path="/explore" element={<ExplorePage recipes={recipes} />}></Route>
+        <Route path="/profile" element={authenticated ? <Profile /> : <Login />}></Route>
+        <Route path={`/recipe/:slug`} element={authenticated ? <DetailPage /> : <Login /> }></Route>
+        <Route path="/explore" element={authenticated ? <ExplorePage recipes={recipes} /> : <Login /> }></Route>
       </Routes>
     </div>
   );

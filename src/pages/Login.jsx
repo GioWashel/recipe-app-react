@@ -23,6 +23,7 @@ export const Login = ({setAccessToken}) => {
     <div className="login-register-container">
       <div className="auth-form-container">
         <h1 id="top-h1">Recipe App</h1>
+  
         <form className="forms" onSubmit={handleSubmit}>
           <input
             className="form-input"
@@ -44,6 +45,7 @@ export const Login = ({setAccessToken}) => {
         </form>
         <div>
             {errorMessage}
+            
           </div>
         <Link to="/register">
           <button className="link-button">
