@@ -5,11 +5,12 @@ import { Register } from "./pages/Register";
 import { Profile } from "./pages/ProfilePage";
 import { DetailPage } from "./pages/DetailPage";
 import { NavBar } from "./components/NavBar";
-import { Routes, Route, useLocation, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useLocation} from "react-router-dom";
 import { ExplorePage } from "./pages/ExplorePage";
 import { useEffect, useState } from "react";
 import { fetchRecipes } from "./services/endpoints/recipes";
 import { isAuth } from "./services/utils/isAuth";
+import { Create } from "./pages/Createpage";
 function App() {
   const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken"));
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken"));
@@ -57,6 +58,7 @@ function App() {
         <Route path="/profile" element={authenticated ? <Profile /> : <Login />}></Route>
         <Route path={`/recipe/:slug`} element={authenticated ? <DetailPage /> : <Login /> }></Route>
         <Route path="/explore" element={authenticated ? <ExplorePage recipes={recipes} /> : <Login /> }></Route>
+        <Route path="/create" element={authenticated ? <Create /> : <Login /> }></Route>
       </Routes>
     </div>
   );
