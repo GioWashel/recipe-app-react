@@ -12,6 +12,7 @@ export const isAuth = async() => {
       if (response.status === 200) {
         const data = response.data;
         localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken",data.refresh);
         return true; // User is authenticated
       }
     }catch(error){

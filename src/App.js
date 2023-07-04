@@ -5,7 +5,7 @@ import { Register } from "./pages/Register";
 import { Profile } from "./pages/ProfilePage";
 import { DetailPage } from "./pages/DetailPage";
 import { NavBar } from "./components/NavBar";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { ExplorePage } from "./pages/ExplorePage";
 import { useEffect, useState } from "react";
 import { fetchRecipes } from "./services/endpoints/recipes";
@@ -13,6 +13,8 @@ import { isAuth } from "./services/utils/isAuth";
 function App() {
   const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken"));
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken"));
+  const [authenticated, setAuthenticated] = useState(false);
+  const location = useLocation();
   //fetch data
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
@@ -26,6 +28,22 @@ function App() {
     };
     fetchData();
   }, []);
+  // check auth
+  useEffect(()=>{
+    const checkAuth = async () => {
+      const isAuthenticated = await isAuth();
+      if(!isAuthenticated) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        setAccessToken(null);
+        setRefreshToken(null);
+        setAuthenticated(false);
+      }else{
+        setAuthenticated(true);
+      }
+    }
+    checkAuth();
+  },[accessToken, location]);
   return (
     <div className="App">
       <NavBar />
