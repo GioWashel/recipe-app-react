@@ -11,9 +11,10 @@ import { useEffect, useState } from "react";
 import { fetchRecipes } from "./services/endpoints/recipes";
 import { isAuth } from "./services/utils/isAuth";
 function App() {
+  const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken"));
+  const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken"));
   //fetch data
   const [recipes, setRecipes] = useState([]);
-  const [accessToken, setAccessToken] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
