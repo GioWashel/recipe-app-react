@@ -52,7 +52,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/home" element={<Home />}></Route>
+        <Route path="/home" element={<Home authenticated={authenticated}/> }></Route>
         <Route path="/login" element={<Login />} setAccessToken={setAccessToken}></Route>
         <Route path="/register" element={<Register />}></Route>
         <Route path="/profile" element={authenticated ? <Profile /> : <Login />}></Route>

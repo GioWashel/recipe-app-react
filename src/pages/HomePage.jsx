@@ -3,7 +3,8 @@ import "./HomePage.css";
 import { Login } from "./Login";
 
 import { SearchBar } from "./SearchBar";
-export const Home = () => {
+import { Welcome } from "../components/Welcome";
+export const Home = ({authenticated}) => {
   return (
     <div className="home">
       <div>
@@ -12,7 +13,7 @@ export const Home = () => {
         <SearchBar />
       </div>
       <div>
-        <Login />
+        {authenticated ? <Welcome /> : <Login />}
       </div>
     </div>
   );
