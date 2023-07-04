@@ -12,7 +12,7 @@ export async function get(endpoint) {
 export async function post(endpoint, data) {
   try {
     const response = await api.post(endpoint, data);
-    return response.status;
+    return response;
   } catch (error) {
     console.error("POST request error ", error);
     throw error;

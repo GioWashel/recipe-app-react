@@ -32,6 +32,11 @@
   border-bottom: 1px solid silver;
   color: black;
 }
+#username{
+  margin-bottom: 30px;
+  border-bottom: 1px solid silver;
+  color: black;
+}
 .login-button {
   background-color: var(--red);
   width: 100%;

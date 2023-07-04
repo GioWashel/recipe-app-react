@@ -5,6 +5,8 @@ import { fetchRecipeDetail } from "../services/endpoints/recipes";
 export const DetailPage = () => {
   const {slug} = useParams();
   const [recipe, setRecipe] = useState(null);
+  
+  // fetch data
   useEffect(()=>{
     const fetchData = async()=>{
       try{

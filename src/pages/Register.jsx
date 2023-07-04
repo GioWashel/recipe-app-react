@@ -1,19 +1,45 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./LoginRegister.css";
 import { Link } from "react-router-dom";
-import { register } from "../services/endpoints/register";
+import { register } from "../services/endpoints/users";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [password2, setPassword2] = useState("");
 
-  function sendForm() {
-    const data = {'username': name, 'password': password, 'email': email, 'password2':password}
-    register(JSON.stringify(data))
-    
-  }
-
+  const [username, setUsername] = useState("");
+  const [errorMessage, setErrorMessage] = useState([]);
+  
+  const sendForm = async () => {
+    const data = {
+      username: username,
+      password: password,
+      email: email,
+      password2: password2,
+    };
+    try {
+      const response = await register(JSON.stringify(data));
+      if (response.status === 201) {
+        setErrorMessage(["Account Created ! Go to Login"]);
+      }
+    } catch (error) {
+      const response = error.response;
+      if (response && response.data) {
+          let errorMessage = [];
+          for (let field in response.data) {
+            const fieldErrors = response.data[field];
+            const errorMessages = fieldErrors.map(
+              (errorM) => `${field}: ${errorM}`
+            );
+            errorMessage.push(errorMessages);
+          }
+          setErrorMessage(errorMessage)
+      } else {
+        setErrorMessage(["Error occurred during registration. Please try again."]);
+      }
+    }
+  };
   return (
     <div className="login-register-container">
       <div className="auth-form-container">
@@ -21,10 +47,10 @@ export const Register = () => {
         <form className="forms" encType="multipart/form-data" method="post">
           <input
             className="form-input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             type="text"
-            placeholder="Name"
+            placeholder="Username"
           />
           <input
             className="form-input"
@@ -40,8 +66,27 @@ export const Register = () => {
             type="password"
             placeholder="Password"
           />
-          <button className="login-button" onClick={(e) => { e.preventDefault(); sendForm() }}>SUBMIT</button>
+            <input
+            className="form-input"
+            value={password2}
+            onChange={(e) => setPassword2(e.target.value)}
+            type="password"
+            placeholder="rewrite Password"
+          />
+          <button
+            className="login-button"
+            onClick={(e) => {
+              e.preventDefault();
+              sendForm();
+            }}
+          >
+            SUBMIT
+          </button>
         </form>
+        {errorMessage.map((message, index) =>(
+          <div key={index}>{message}</div>
+        )
+        )}
         <Link to="/login">
           <button className="link-button">Have an account? Login</button>
         </Link>
