@@ -1,11 +1,12 @@
 import { useState } from "react";
 import "./LoginRegister.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../services/endpoints/users";
 export const Login = ({setAccessToken}) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
   const handleSubmit = async(e) => {
     e.preventDefault();
     const credentials = {
@@ -14,7 +15,7 @@ export const Login = ({setAccessToken}) => {
     }
     try{
         await login(credentials);
-        setErrorMessage("Logged !");
+        navigate("/home");
     }catch(error){
       setErrorMessage("Please enter a valid username or password !");
     }
