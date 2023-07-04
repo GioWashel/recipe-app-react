@@ -14,8 +14,10 @@ export const Login = ({setAccessToken}) => {
       password : password
     }
     try{
-        await login(credentials);
-        navigate("/home");
+        const status = await login(credentials);
+        if(status === 200){
+            navigate("/home");
+        }
     }catch(error){
       setErrorMessage("Please enter a valid username or password !");
     }
