@@ -5,7 +5,7 @@ export const SearchBar = () => {
     return(
         <div className="search-wrapper">
             <FaSearch id="search-icon" />
-            <input className="search-input"placeholder="Enter a recipe..." type="text" />
+            <input className="search-input"placeholder="Find a recipe..." type="text" />
         </div>
 
     );

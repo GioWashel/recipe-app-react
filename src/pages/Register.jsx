@@ -10,7 +10,7 @@ export const Register = () => {
 
   const [username, setUsername] = useState("");
   const [errorMessage, setErrorMessage] = useState([]);
-  
+
   const sendForm = async () => {
     const data = {
       username: username,
@@ -26,26 +26,29 @@ export const Register = () => {
     } catch (error) {
       const response = error.response;
       if (response && response.data) {
-          let errorMessage = [];
-          for (let field in response.data) {
-            const fieldErrors = response.data[field];
-            const errorMessages = fieldErrors.map(
-              (errorM) => `${field}: ${errorM}`
-            );
-            errorMessage.push(errorMessages);
-          }
-          setErrorMessage(errorMessage)
+        let errorMessage = [];
+        for (let field in response.data) {
+          const fieldErrors = response.data[field];
+          const errorMessages = fieldErrors.map(
+            (errorM) => `${field}: ${errorM}`
+          );
+          errorMessage.push(errorMessages);
+        }
+        setErrorMessage(errorMessage);
       } else {
-        setErrorMessage(["Error occurred during registration. Please try again."]);
+        setErrorMessage([
+          "Error occurred during registration. Please try again.",
+        ]);
       }
     }
   };
   return (
     <div className="login-register-container">
       <div className="auth-form-container">
-        <h1 id="top-h1">Sign Up</h1>
+        <h1 className="top-h1">Sign Up</h1>
         <form className="forms" encType="multipart/form-data" method="post">
           <input
+            required
             className="form-input"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -53,6 +56,7 @@ export const Register = () => {
             placeholder="Username"
           />
           <input
+            required
             className="form-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -60,13 +64,15 @@ export const Register = () => {
             placeholder="Email"
           />
           <input
+            required
             className="form-input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Password"
           />
-            <input
+          <input
+            required
             className="form-input"
             value={password2}
             onChange={(e) => setPassword2(e.target.value)}
@@ -80,13 +86,12 @@ export const Register = () => {
               sendForm();
             }}
           >
-            SUBMIT
+            <span>SUBMIT</span>
           </button>
         </form>
-        {errorMessage.map((message, index) =>(
+        {errorMessage.map((message, index) => (
           <div key={index}>{message}</div>
-        )
-        )}
+        ))}
         <Link to="/login">
           <button className="link-button">Have an account? Login</button>
         </Link>
