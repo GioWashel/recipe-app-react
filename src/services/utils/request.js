@@ -1,4 +1,5 @@
 import api from "../api";
+
 export async function get(endpoint) {
   try {
     const response = await api.get(endpoint);
