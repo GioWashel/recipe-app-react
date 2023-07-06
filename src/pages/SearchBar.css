@@ -30,6 +30,10 @@
   outline-width: 0;
 }
 
+.search-input:focus-visible {
+  outline: none;
+}
+
 #search-icon {
   color: var(--tigers-eye);
 }

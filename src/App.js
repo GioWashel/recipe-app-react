@@ -12,6 +12,7 @@ import { fetchRecipes } from "./services/endpoints/recipes";
 import { isAuth } from "./services/utils/isAuth";
 import { Create } from "./pages/Createpage";
 import Skeleton from "react-loading-skeleton";
+import { SearchPage } from "./pages/SearchPage";
 function App() {
   const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken"));
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken"));
@@ -66,6 +67,7 @@ function App() {
         <Route path={`/recipe/:slug`} element={authenticated ? <DetailPage /> : <Login /> }></Route>
         <Route path="/explore" element={authenticated ? <ExplorePage recipes={recipes} /> : <Login /> }></Route>
         <Route path="/create" element={authenticated ? <Create /> : <Login /> }></Route>
+        <Route path={`/search/:query`} element={<SearchPage />} ></Route>
       </Routes>
     </div>
   );
