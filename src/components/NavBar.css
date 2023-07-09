@@ -95,3 +95,22 @@ li {
 .container-input svg {
   stroke: var(--tigers-eye);
 }
+
+.logout-button {
+
+    display: block;
+    position: absolute;
+    right: 3vw;
+    top: 2.vw;
+    padding: 8px 30px;
+    border-radius: 100px;
+    border-style: none;
+    background-color: white;
+    opacity: 0.8;
+    font-size: 1rem;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+  opacity: 1;
+}

@@ -1,0 +1,28 @@
+.create-page {
+}
+
+.create-form {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin-left: 15%;
+    position: relative;
+    top: 30vh;
+    transform: translate(-50% -50%);
+
+}
+
+.create-input {
+    padding: 10px;
+    margin-bottom: 1rem;
+}
+
+.create-textarea {
+    padding: 10px;
+    margin-bottom: 1rem;
+    
+}
+
+.create-page label {
+    display: inline;
+}
