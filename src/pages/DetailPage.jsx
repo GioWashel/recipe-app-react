@@ -5,13 +5,15 @@ import { fetchRecipeDetail } from "../services/endpoints/recipes";
 export const DetailPage = () => {
   const {slug} = useParams();
   const [recipe, setRecipe] = useState(null);
+  const [recommendations, setRecommendations] = useState(null)  
   
   // fetch data
   useEffect(()=>{
     const fetchData = async()=>{
       try{
       const fetchRecipe = await fetchRecipeDetail(slug);
-      setRecipe(fetchRecipe);
+      setRecipe(fetchRecipe['recipe']);
+      setRecommendations(fetchRecipe['similar_recipes']);
       }catch(error){
         console.error("Error fetching data ",error);
       }

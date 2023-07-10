@@ -11,7 +11,7 @@ export const Create = () => {
     function createRecipe(event) {
         event.preventDefault()
         const content = {
-            'title': '',
+            'title': 'pizza',
             'tags': [4],
             // 'recipe_image': '',
             'custom_tags':'simple',
