@@ -9,12 +9,16 @@ export const SearchBar = () => {
     function search(e, value) {
         if (e.key === 'Enter') navigate(`/search/${value}`);
     }
+    function search2(value) {
+        navigate(`/search/${value}`);
+    }
 
     return(
         <div className="search-wrapper">
             <FaSearch id="search-icon" />
             <input className="search-input"placeholder="Find a recipe..." type="text"
-                onKeyDown={e => search(e, e.target.value)}
+                // onKeyDown={e => search(e, e.target.value)}  // less efficient
+                onSubmit={e => search2(e.target.value)}
             ></input>
         </div>
 
