@@ -19,8 +19,6 @@ export const SearchPage = () => {
         fetchData();
     }, [])
 
-
-
     return (
         <div>
             <ExplorePage recipes={recipes}/>
