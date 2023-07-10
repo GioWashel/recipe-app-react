@@ -13,6 +13,8 @@ import { isAuth } from "./services/utils/isAuth";
 import { Create } from "./pages/Createpage";
 import Skeleton from "react-loading-skeleton";
 import { SearchPage } from "./pages/SearchPage";
+
+
 function App() {
   const [accessToken, setAccessToken] = useState(localStorage.getItem("accessToken"));
   const [refreshToken, setRefreshToken] = useState(localStorage.getItem("refreshToken"));
@@ -57,7 +59,7 @@ function App() {
   }
   return (
     <div className="App">
-      <NavBar />
+      <NavBar authenticated={authenticated} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/home" element={<Home authenticated={authenticated}/> }></Route>

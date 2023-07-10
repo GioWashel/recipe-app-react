@@ -1,8 +1,18 @@
 import React from "react";
 import logo from "./first-color-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
-export const NavBar = () => {
+import { Login } from "../pages/Login";
+
+
+export const NavBar = ({authenticated}) => {
+  const navigate = useNavigate();
+  function logout() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    navigate('/home');
+  };
+  
   return (
     <>
       <div className="navbar-container">
@@ -45,6 +55,11 @@ export const NavBar = () => {
             </li>
           </ul>
         </nav>
+
+        
+        {authenticated && <button className="logout-button" onClick={logout}>logout</button>}
+        
+      
       </div>
     </>
   );
