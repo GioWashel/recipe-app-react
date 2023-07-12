@@ -2,13 +2,13 @@ import { get, post, put, del } from "../utils/request";
 
 const basicRoute = "/recipe";
 // function fetch recipes
-export const fetchRecipes = () => {
-  return get(`${basicRoute}s/`);
+export const fetchRecipes = (page) => {
+  return get(`${basicRoute}s/?page=${page}`);
 };
 
 // function to create recipes
 export const createRecipe = (data) => {
-  return post(`${basicRoute}s/`, data);
+  return post(`${basicRoute}s/`,data);
 };
 
 // function to get recipe details
@@ -25,3 +25,8 @@ export const updateRecipe = (slug, data) => {
 export const deleteRecipe = (slug) => {
   return del(`${basicRoute}/${slug}/`);
 };
+
+// search for recipes
+export const searchRecipe = (query) => {
+  return get(`/search/?query=${query}`);
+}

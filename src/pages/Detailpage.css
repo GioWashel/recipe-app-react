@@ -149,3 +149,53 @@ label .check-mark:after {
     transform: scale(1);
   }
 }
+
+.rec-container {
+  background-color: white;
+   width: 20vw;
+   height: 80vh;
+  margin-top: 5rem;
+  margin-left: 5px;
+  border-radius: 8px;
+  overflow: hidden;
+  
+}
+.recipes-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  list-style-type: none;
+
+}
+.rec {
+  text-align: center;
+  border-radius: 10px;
+  transition: background-color 0.3s ease 0s; 
+}
+.rec :hover {
+  background-color: var(--hot-pink);
+  color: white;
+  
+}
+.recipe-rec-text {
+  padding: 0.7rem;
+}
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+}
+.user-btn {
+    padding: 8px 30px;
+    border-radius: 100px;
+    border-style: none;
+    background-color: var(--hot-pink);
+    opacity: 0.8;
+    font-size: 1rem;
+    margin-left: 5px;
+}
+.user-btn:hover {
+  cursor: pointer;
+  opacity: 1;
+}
