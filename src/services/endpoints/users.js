@@ -1,4 +1,4 @@
-import {post} from '../utils/request';
+import {get, post} from '../utils/request';
 
 export const register = (data) => {
     const route = "/register/";
@@ -21,8 +21,18 @@ export const login = async (data) => {
     }
 }
 
+export const getHistory = async () => {
+    const route = "/history/";
+    return get(route);
+}
+
 export const getRefreshToken = async (refreshToken) => {
     const route = "/token/refresh/";
     const data =JSON.stringify({refresh : refreshToken });
     return post(route, data);
+}
+
+export const getProfile = async () => {
+    const route = "/profile/";
+    return get(route);
 }

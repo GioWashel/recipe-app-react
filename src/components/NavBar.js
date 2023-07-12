@@ -43,7 +43,7 @@ export const NavBar = ({authenticated}) => {
               </Link>{" "}
             </li>
             <li>
-              <Link to="/explore" id="explore-link" className="links">
+              <Link to="/explore/" id="explore-link" className="links">
                 Explore
               </Link>{" "}
             </li>

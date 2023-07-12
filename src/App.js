@@ -8,12 +8,11 @@ import { NavBar } from "./components/NavBar";
 import { Routes, Route, useLocation} from "react-router-dom";
 import { ExplorePage } from "./pages/ExplorePage";
 import { useEffect, useState } from "react";
-import { fetchRecipes } from "./services/endpoints/recipes";
 import { isAuth } from "./services/utils/isAuth";
 import { Create } from "./pages/Createpage";
-import Skeleton from "react-loading-skeleton";
 import { SearchPage } from "./pages/SearchPage";
 import axios from 'axios';
+import api from "./services/api";
 
 
 function App() {
@@ -26,18 +25,7 @@ function App() {
   // location change everytime user in different location
   const location = useLocation();
   //fetch data
-  const [recipes, setRecipes] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const recipesData = await fetchRecipes();
-        setRecipes(recipesData.results);
-      } catch (error) {
-        console.error("Error fetching data", error);
-      }
-    };
-    fetchData();
-  }, []);
+ 
 
 
   useEffect( () => {
@@ -69,6 +57,8 @@ function App() {
       setLoading(false);
     }
     checkAuth();
+    const newAccessToken = localStorage.getItem("accessToken");
+    api.defaults.headers.common["Authorization"] = "Bearer " + newAccessToken;
   },[accessToken, location]);
 
 
@@ -78,7 +68,6 @@ function App() {
   if(loading){
     return "";
   }
-  console.log(tags);
   return (
     <div className="App">
       <NavBar authenticated={authenticated} />
@@ -89,9 +78,9 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/profile" element={authenticated ? <Profile /> : <Login />}></Route>
         <Route path={`/recipe/:slug`} element={authenticated ? <DetailPage /> : <Login /> }></Route>
-        <Route path="/explore" element={authenticated ? <ExplorePage recipes={recipes} /> : <Login /> }></Route>
+        <Route path={`/explore/:page?`}  element={authenticated ? <ExplorePage /> : <Login /> }></Route>
         <Route path="/create" element={authenticated ? <Create tags={tags}/> : <Login /> }></Route>
-        <Route path={`/search/:query`} element={<SearchPage />} ></Route>
+        <Route path={`/search/:query`} element={ authenticated ? <SearchPage /> : <Login />} ></Route>
       </Routes>
     </div>
   );

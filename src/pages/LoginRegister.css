@@ -110,3 +110,6 @@
   border: none;
   transition: all 0.3s;
 }
+#username {
+  color : black;
+}
