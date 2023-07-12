@@ -9,7 +9,7 @@
   width: 100%;
 }
 
-li {
+.navbar-container li {
   display: inline;
   list-style: none;
   display: inline-block;
