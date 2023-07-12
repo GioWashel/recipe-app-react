@@ -9,76 +9,70 @@
 .forms {
   display: flex;
   flex-direction: column;
-  
-
-
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
+
 .auth-form-container {
   position: relative;
   background: white;
-  padding: 100px 100px 30px 100px;
   align-items: center;
-  width: 300px;
-  font-size: 14px;
-  border-radius: 5px;
-  margin-bottom: 30px;
-
+  width: 30rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-top: 5rem;
 }
 
-#top-h1 {
-  position: absolute;
-  top: 2%;
-  margin-bottom: 30px;
-  border-bottom: 1px solid silver;
-  color: black;
+.auth-form-container .top-h1 {
+  border-bottom: 1px solid var(--tigers-eye);
+  color: var(--tigers-eye);
+  margin-bottom: 0;
 }
-#username{
-  margin-bottom: 30px;
-  border-bottom: 1px solid silver;
-  color: black;
-}
+
 .login-button {
-  background-color: var(--red);
+  display: inline-block;
+  border-radius: 8px;
+  background-color: var(--tigers-eye);
+  color: #fff;
+  text-align: center;
+  font-size: 17px;
+  padding: 16px;
   width: 100%;
-  display: block;
-  padding: 16px;
+  transition: 0.5s;
+  cursor: pointer;
+  margin: 5px;
   border: none;
-  font-size: 16px;
-  margin-bottom: 30px;
-  color: white;
 }
-.login-button:hover {
-  background: var(--darker-red);
-  transition: 0.3s;
+
+.login-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 }
-.form-input {
-  font-size: 16px;
-  outline: none;
-  border: 2px solid lightgray;
-  padding: 16px;
-  margin-bottom: 30px;
-  border-radius: 2px;
-  width: 300px;
-  transition: all 0.3s ease;
+
+.login-button span:after {
+  content: "»";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
 }
-.form-input[type="text"]:hover,
-.form-input[type="email"]:hover,
-.form-input[type="password"]:hover {
-  border: 2px solid black;
+
+.login-button:hover span {
+  padding-right: 15px;
 }
-.form-input[type="text"]:active,
-.form-input[type="email"]:active,
-.form-input[type="password"]:active {
-  border: 2px solid black;
+
+.login-button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
-.form-input[type="text"]:focus,
-.form-input[type="email"]:focus,
-.form-input[type="password"]:focus {
-  border: 2px solid black;
-}
+
 .link-button {
   background: none;
-  color: black;
+  color: var(--tigers-eye);
   text-decoration: underline;
   width: 100%;
   display: block;
@@ -87,6 +81,32 @@
   font-size: 16px;
   margin-bottom: 30px;
 }
+
 .link-button:hover {
-  color: lightblue;
+  color: var(--orange-web);
+}
+
+.form-input {
+  width: 20rem;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-family: inherit;
+  box-shadow: 0 0 0 1px var(--hot-pink);
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  color: var(--tigers-eye);
+  transition: all 0.3s;
+}
+
+.form-input::placeholder {
+  color: var(--hot-pink);
+  font-size: 14px;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px 1px var(--hot-pink);
+  border: none;
+  transition: all 0.3s;
 }

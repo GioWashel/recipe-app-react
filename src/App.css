@@ -27,5 +27,5 @@
   /* ------------------ */
 
   color: var(--darkish-green, --hookers-green);
-  background-image: linear-gradient(var(--yellow), var(--red));
+  background-image: linear-gradient(62deg, var(--yellow) 0%, var(--red) 100%);
 }

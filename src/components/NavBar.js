@@ -1,16 +1,26 @@
 import React from "react";
 import logo from "./first-color-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
-export const NavBar = () => {
+import { Login } from "../pages/Login";
+
+
+export const NavBar = ({authenticated}) => {
+  const navigate = useNavigate();
+  function logout() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    navigate('/home');
+  };
+  
   return (
     <>
       <div className="navbar-container">
         <div className="logo-container">
           <img id="logo" src={logo} alt="logo" />
         </div>
-        <div class="container-input">
-          <input type="text" placeholder="Search" name="text" class="input" />
+        <div className="container-input">
+          <input type="text" placeholder="Search" name="text" className="input" />
           <svg
             fill="#ae6d1b" /* --tigers-eye */
             width="20px"
@@ -20,7 +30,7 @@ export const NavBar = () => {
           >
             <path
               d="M790.588 1468.235c-373.722 0-677.647-303.924-677.647-677.647 0-373.722 303.925-677.647 677.647-677.647 373.723 0 677.647 303.925 677.647 677.647 0 373.723-303.924 677.647-677.647 677.647Zm596.781-160.715c120.396-138.692 193.807-319.285 193.807-516.932C1581.176 354.748 1226.428 0 790.588 0S0 354.748 0 790.588s354.748 790.588 790.588 790.588c197.647 0 378.24-73.411 516.932-193.807l516.028 516.142 79.963-79.963-516.142-516.028Z"
-              fill-rule="evenodd"
+              fillRule="evenodd"
             ></path>
           </svg>
         </div>
@@ -45,6 +55,11 @@ export const NavBar = () => {
             </li>
           </ul>
         </nav>
+
+        
+        {authenticated && <button className="logout-button" onClick={logout}>logout</button>}
+        
+      
       </div>
     </>
   );

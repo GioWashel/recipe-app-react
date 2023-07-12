@@ -1,0 +1,78 @@
+.create-page {
+
+}
+
+
+
+#test-button {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    z-index: 2;
+}
+
+.create-form {
+    
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin-left: 15%;
+    position: relative;
+    top: 30vh;
+    transform: translate(-50% -50%);
+    gap: 2rem;
+
+
+}
+
+.small-inputs {
+    display: flex;
+    gap: 5rem;
+}
+.left-side input{
+    display: block;
+    width: 20vw;
+    padding: .3rem 1.3rem;
+    font-size: 1rem;
+}
+.tags-container li {
+    list-style: none;
+    padding-bottom: .8rem;
+}
+
+.tags-container label {
+    padding-left: .4rem;
+}
+
+.create-input {
+    padding: 8px;
+    margin-bottom: 1rem;
+    border: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 5px var(--tigers-eye)
+}
+
+.create-input:hover {
+    box-shadow: 0 0 1rem var(--tigers-eye);
+}
+
+.create-textarea {
+    padding: 10px;
+    height: 20vh;
+    margin: 0;
+    
+}
+
+.create-page label {
+    display: inline;
+}
+
+.recipe-submit-button {
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white;
+    padding: 4px 10px;
+    width: max-content;
+    font-size: 1rem;
+    
+}
