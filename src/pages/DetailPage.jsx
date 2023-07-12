@@ -33,7 +33,7 @@ export const DetailPage = () => {
     <div className="recipe-container">
       <div className="recipe">
         <div className="img-container">
-          <img src={recipe.recipe_images} alt={recipe.title} />
+          <img src={recipe.recipe_image} alt={recipe.title} />
         </div>
         <div className="details">
           <h2 className="title">{recipe.title}</h2>
