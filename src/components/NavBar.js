@@ -12,7 +12,9 @@ export const NavBar = ({authenticated}) => {
     localStorage.removeItem('refreshToken');
     navigate('/home');
   };
-  
+  function profile() {
+    navigate("/profile");
+  }
   return (
     <>
       <div className="navbar-container">
@@ -56,10 +58,16 @@ export const NavBar = ({authenticated}) => {
           </ul>
         </nav>
 
-        
-        {authenticated && <button className="logout-button" onClick={logout}>logout</button>}
-        
-      
+        {authenticated && (
+          <div className="btn-group">
+            <button className="fnc-button" onClick={profile}>
+              profile
+            </button>
+            <button className="fnc-button" onClick={logout}>
+              logout
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

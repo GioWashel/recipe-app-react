@@ -1,4 +1,3 @@
-import { get } from "../services/utils/request";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ExplorePage } from "./ExplorePage";
