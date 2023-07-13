@@ -37,20 +37,20 @@ export const NavBar = ({authenticated}) => {
           </svg>
         </div>
 
-        <nav>
+        <nav className="nav-links-container">
           <ul className="nav-links">
             <li>
               <Link to="/home" id="home-link" className="links">
                 Home
-              </Link>{" "}
+              </Link>
             </li>
             <li>
               <Link to="/explore/" id="explore-link" className="links">
                 Explore
-              </Link>{" "}
+              </Link>
             </li>
             <li>
-              {" "}
+              
               <Link to="/create" id="create-link" className="links">
                 Create
               </Link>

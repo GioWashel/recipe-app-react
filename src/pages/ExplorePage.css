@@ -1,22 +1,20 @@
-.recipe-list-container {
-  padding: 7rem 5rem;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
-}
-.myrecipe-list-container {
-  padding: 1rem 5rem;
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
-}
-
 .wrapper {
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 }
+
+.recipe-list-container {
+  padding: 9rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+
 .next-prev-button {
 
     display: block;
@@ -40,3 +38,12 @@
   flex-direction: row;
   align-items: center;
 }
+
+/* 
+@media screen and (max-width:400px) { 
+  .recipe-list-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+} */

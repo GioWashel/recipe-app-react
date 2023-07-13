@@ -1,12 +1,13 @@
 .navbar-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  gap: 6rem;
   background-color: transparent;
   position: absolute;
   top: 0px;
   width: 100%;
+
 }
 
 .navbar-container li {
@@ -56,11 +57,23 @@
   text-decoration: none;
 }
 
+nav.nav-links-container {
+  margin-left: 1rem; 
+}
+
 .nav-links {
-  margin: 1vw 40vw 0 0;
+  /* margin: 1vw 40vw 0 0; */
   background-color: white;
   border-radius: 10px;
   padding: 1.4rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.nav-links li {
+
+
 }
 
 /* cool search bar style */
@@ -96,6 +109,13 @@
   stroke: var(--tigers-eye);
 }
 
+.btn-group {
+  position: relative;
+  left: 8%;
+  display: flex;
+  flex-direction: row;
+}
+
 .fnc-button {
     padding: 8px 30px;
     border-radius: 100px;
@@ -110,8 +130,4 @@
 .fnc-button:hover {
   cursor: pointer;
   opacity: 1;
-}
-.btn-group {
-  display: flex;
-  flex-direction: row;
 }
