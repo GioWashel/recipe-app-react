@@ -14,12 +14,14 @@
 .create-form {
     
     display: flex;
+    padding-top: 20%;
+    padding-left: 13%;
+    padding-bottom: 2rem;
     flex-direction: column;
     width: 65%;
-    margin-left: 15%;
-    position: relative;
+    /* margin-left: 15%; */
+    position: static;
     top: 30vh;
-    transform: translate(-50% -50%);
     gap: 2rem;
 
 
@@ -28,6 +30,7 @@
 .small-inputs {
     display: flex;
     gap: 5rem;
+    /* max-height: 15vw; */
 }
 .left-side input{
     display: block;
@@ -35,9 +38,20 @@
     padding: .3rem 1.3rem;
     font-size: 1rem;
 }
+
+.tags-container ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: .8rem;
+    height: 14rem;
+
+}
+
 .tags-container li {
     list-style: none;
     padding-bottom: .8rem;
+    padding-right: 2rem;
 }
 
 .tags-container label {
@@ -48,7 +62,7 @@
     padding: 8px;
     margin-bottom: 1rem;
     border: 0;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 0 5px var(--tigers-eye)
 }
 
@@ -60,6 +74,8 @@
     padding: 10px;
     height: 20vh;
     margin: 0;
+    resize: none;
+    border-radius: 10px;
     
 }
 
@@ -68,11 +84,16 @@
 }
 
 .recipe-submit-button {
-    border: 2px solid black;
+    border: none;
     border-radius: 20px;
     background-color: white;
-    padding: 4px 10px;
+    padding: .4rem 1.4rem;
     width: max-content;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    margin-left: 8px;
     
+}
+
+.recipe-submit-button:hover {
+    cursor: pointer;
 }
