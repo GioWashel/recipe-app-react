@@ -10,7 +10,7 @@ export const Home = ({authenticated}) => {
       <div>
         <h1>So, what are you planning to eat?</h1>
         <h1>We have got you covered!</h1>
-        <SearchBar />
+        {authenticated && <SearchBar /> }
       </div>
       <div>
         {authenticated ? <Welcome /> : <Login />}

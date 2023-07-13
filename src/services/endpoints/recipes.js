@@ -30,3 +30,10 @@ export const deleteRecipe = (slug) => {
 export const searchRecipe = (query) => {
   return get(`/search/?query=${query}`);
 }
+
+export const addToFavorites = (slug) => {
+  return post(`recipe/${slug}/favourite/`);
+}
+export const getFavorites = () => {
+  return get("favourites/");
+}

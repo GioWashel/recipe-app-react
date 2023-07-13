@@ -7,6 +7,7 @@ import {
   updateRecipe,
 } from "../services/endpoints/recipes";
 import { isAllowed } from "../services/utils/isAllowed";
+import { FavoriteButton } from "../components/FavoriteButton";
 export const DetailPage = () => {
   const { slug } = useParams();
   const [recipe, setRecipe] = useState(null);
@@ -94,7 +95,10 @@ export const DetailPage = () => {
                 }
               ></input>
             ) : (
-              <h2 className="title">{recipe.title}</h2>
+              <div className="title-container">
+                <h2 className="title">{recipe.title}</h2>
+                <FavoriteButton slug={recipe.slug} />
+              </div>
             )}
             <div className="serving">
               <h3>Serving</h3>

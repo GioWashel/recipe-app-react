@@ -21,9 +21,7 @@
   margin-top: 0;
 }
 
-.title {
-  text-align: center;
-}
+
 
 .img-container {
   overflow: hidden;
@@ -198,4 +196,10 @@ label .check-mark:after {
 .user-btn:hover {
   cursor: pointer;
   opacity: 1;
+}
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
