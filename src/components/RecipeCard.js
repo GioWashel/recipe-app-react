@@ -25,15 +25,20 @@ export const RecipeCard = ({ recipe }) => {
               {recipe.title}
             </Title>
             <div className="info">
-              <Rate disabled defaultValue={recipe.servings} />
               <div className="time-info">
                 <ClockCircleOutlined />
                 <span className="prep-time">{recipe.prep_time}mn</span>
+                
               </div>
+              
             </div>
             <Space size={[0, 3]} wrap className="tags">
               {recipe.tags.map((tag) => {
-                return <Tag color="gold" key={tag.id}>{tag.name}</Tag>;
+                return (
+                  <Tag color="gold" key={tag.id}>
+                    {tag.name}
+                  </Tag>
+                );
               })}
             </Space>
           </div>
