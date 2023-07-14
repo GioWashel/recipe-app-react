@@ -156,11 +156,11 @@ export const DetailPage = () => {
                 </div>
                 <div className="ingredients">
                   <h3>Ingredients</h3>
-                  <ul>{recipe.ingredients}</ul>
+                  <p>{recipe.ingredients}</p>
                 </div>
                 <div className="instructions">
                   <h3>Instructions</h3>
-                  <ul>{recipe.instructions}</ul>
+                  <p>{recipe.instructions}</p>
                 </div>
               </>
             )}

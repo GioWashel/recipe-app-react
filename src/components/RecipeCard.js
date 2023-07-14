@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Skeleton } from "antd";
 import "./RecipeCard.css";
 import { ClockCircleOutlined } from "@ant-design/icons";
-const { Title } = Typography;
+const { Text, Title } = Typography;
 
 export const RecipeCard = ({ recipe }) => {
   return (
@@ -24,13 +24,14 @@ export const RecipeCard = ({ recipe }) => {
             <Title level={5} className="title-style">
               {recipe.title}
             </Title>
+            <Text type="secondary">
+              Author : <b>{recipe.author.username}</b>
+            </Text>
             <div className="info">
               <div className="time-info">
                 <ClockCircleOutlined />
                 <span className="prep-time">{recipe.prep_time}mn</span>
-                
               </div>
-              
             </div>
             <Space size={[0, 3]} wrap className="tags">
               {recipe.tags.map((tag) => {

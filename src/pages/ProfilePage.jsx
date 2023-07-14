@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Typography, Button, Avatar, Tabs, Result } from "antd";
+import { Card, Typography, Button, Avatar, Tabs, Result, Empty } from "antd";
 import {
   UserOutlined,
   MailOutlined,
@@ -138,15 +138,7 @@ export const Profile = () => {
               ))}
             </div>
           ) : (
-            <Result
-              icon={<QuestionOutlined style={{color : "#f8aa17"}} />}
-              title="No history Found, Start Exploring recipes !"
-              extra={
-                <Link to="/explore/">
-                  <Button type="primary">Explore</Button>
-                </Link>
-              }
-            ></Result>
+            <Empty />
           )}
         </TabPane>
       </Tabs>
