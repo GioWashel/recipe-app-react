@@ -20,8 +20,8 @@ export const ExplorePage = ({ setRecipe }) => {
         setNext(recipesData.next);
         setRecipes(recipesData.results);
       } catch (error) {
+
         console.error("Error fetching data", error);
-        navigate("/404");
       }
     };
     fetchData();
