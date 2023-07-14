@@ -17,7 +17,7 @@ export const Welcome = () => {
     fetchData();
   }, []);
   return (
-    <div className="login-register-container">
+    <div className="login-register-container welcome">
       <div className="auth-form-container">
         <h1 className="top-h1">Recipe App</h1>
         <div>

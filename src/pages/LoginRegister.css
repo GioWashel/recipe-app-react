@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .auth-form-container,
@@ -21,7 +21,7 @@
   width: 30rem;
   font-size: 1rem;
   border-radius: 10px;
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
 }
 
 .auth-form-container .top-h1 {
