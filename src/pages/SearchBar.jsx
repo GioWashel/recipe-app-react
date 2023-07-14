@@ -2,24 +2,28 @@ import { useState } from "react";
 import "./SearchBar.css";
 import {FaSearch} from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
-
+import { Input } from "antd";
+import { SearchOutlined } from '@ant-design/icons';
+const {Search} = Input;
 
 export const SearchBar = () => {
-    const [query, setQuery] = useState("");
     const navigate = useNavigate();
-    function search(value) {
+    function HandleSearch(value) {
+        if(value)
         navigate(`/search/${value}`);
     }
 
     return(
-        <div className="search-wrapper">
-            <div onClick={()=> search(query)}>
-            <FaSearch id="search-icon" />
-            </div>
-            <input className="search-input"placeholder="Find a recipe..." type="text"
-                onChange={(e) => setQuery(e.target.value)}
-            ></input>
-        </div>
+        <Search 
+        placeholder="Search for recipes here" 
+        onSearch={HandleSearch} 
+        enterButton={<SearchOutlined  />}
+        size="large"
+        style={{
+        borderRadius: '20px',
+        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
+        }}
+        />
 
     );
 }

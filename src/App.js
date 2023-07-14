@@ -5,7 +5,7 @@ import { Register } from "./pages/Register";
 import { Profile } from "./pages/ProfilePage";
 import { DetailPage } from "./pages/DetailPage";
 import { NavBar } from "./components/NavBar";
-import { Routes, Route, useLocation} from "react-router-dom";
+import { Routes, Route, useLocation, Navigate} from "react-router-dom";
 import { ExplorePage } from "./pages/ExplorePage";
 import { useEffect, useState } from "react";
 import { isAuth } from "./services/utils/isAuth";
@@ -13,6 +13,7 @@ import { Create } from "./pages/Createpage";
 import { SearchPage } from "./pages/SearchPage";
 import axios from 'axios';
 import api from "./services/api";
+import { NotFound } from "./pages/NotFound";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
       if(!isAuthenticated) {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
+        delete api.defaults.headers.common["Authorization"]
         setAccessToken(null);
         setRefreshToken(null);
         setAuthenticated(false);
@@ -78,9 +80,11 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/profile" element={authenticated ? <Profile /> : <Login />}></Route>
         <Route path={`/recipe/:slug`} element={authenticated ? <DetailPage /> : <Login /> }></Route>
-        <Route path={`/explore/:page?`}  element={authenticated ? <ExplorePage /> : <Login /> }></Route>
+        <Route path={`/explore/:page?`}  element={<ExplorePage />}></Route>
         <Route path="/create" element={authenticated ? <Create tags={tags}/> : <Login /> }></Route>
         <Route path={`/search/:query`} element={ authenticated ? <SearchPage /> : <Login />} ></Route>
+        <Route path="/404" element={<NotFound />} ></Route>
+        <Route path="*" element={<Navigate to="/404" replace/>}></Route>
       </Routes>
     </div>
   );

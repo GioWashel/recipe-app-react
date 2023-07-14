@@ -1,27 +1,24 @@
 import { useState } from "react";
-import "./LoginRegister.css";
+import { Form, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import { register } from "../services/endpoints/users";
-
+import { Typography } from 'antd';
+const { Title } = Typography;
 export const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
-
-  const [username, setUsername] = useState("");
   const [errorMessage, setErrorMessage] = useState([]);
 
-  const sendForm = async () => {
+  const onFinish = async (values) => {
+    const { username, email, password, password2 } = values;
     const data = {
       username: username,
-      password: password,
       email: email,
+      password: password,
       password2: password2,
     };
     try {
       const response = await register(JSON.stringify(data));
       if (response.status === 201) {
-        setErrorMessage(["Account Created ! Go to Login"]);
+        setErrorMessage(["Account Created! Go to Login"]);
       }
     } catch (error) {
       const response = error.response;
@@ -36,65 +33,66 @@ export const Register = () => {
         }
         setErrorMessage(errorMessage);
       } else {
-        setErrorMessage([
-          "Error occurred during registration. Please try again.",
-        ]);
+        setErrorMessage(["Error occurred during registration. Please try again."]);
       }
     }
   };
+
   return (
-    <div className="login-register-container">
-      <div className="auth-form-container">
-        <h1 className="top-h1">Sign Up</h1>
-        <form className="forms" encType="multipart/form-data" method="post">
-          <input
-            required
-            className="form-input"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            type="text"
-            placeholder="Username"
-          />
-          <input
-            required
-            className="form-input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Email"
-          />
-          <input
-            required
-            className="form-input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="Password"
-          />
-          <input
-            required
-            className="form-input"
-            value={password2}
-            onChange={(e) => setPassword2(e.target.value)}
-            type="password"
-            placeholder="rewrite Password"
-          />
-          <button
-            className="login-button"
-            onClick={(e) => {
-              e.preventDefault();
-              sendForm();
-            }}
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
+      <div style={{ width: "300px", padding: "20px", border: "1px solid #ccc", borderRadius: "5px", backgroundColor: "#fff" }}>
+        <Title style={{ textAlign: "center", marginBottom: "20px" }}>Sign Up</Title>
+
+        <Form onFinish={onFinish}>
+          <Form.Item
+            name="username"
+            rules={[{ required: true, message: "Please enter your username" }]}
           >
-            <span>SUBMIT</span>
-          </button>
-        </form>
+            <Input placeholder="Username" />
+          </Form.Item>
+          <Form.Item
+            name="email"
+            rules={[
+              { required: true, message: "Please enter your email" },
+              { type: "email", message: "Please enter a valid email" },
+            ]}
+          >
+            <Input placeholder="Email" />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: "Please enter your password" }]}
+          >
+            <Input.Password placeholder="Password" />
+          </Form.Item>
+          <Form.Item
+            name="password2"
+            rules={[
+              { required: true, message: "Please rewrite your password" },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue("password") === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error("The two passwords do not match"));
+                },
+              }),
+            ]}
+          >
+            <Input.Password placeholder="Rewrite Password" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+              SUBMIT
+            </Button>
+          </Form.Item>
+        </Form>
         {errorMessage.map((message, index) => (
           <div key={index}>{message}</div>
         ))}
-        <Link to="/login">
-          <button className="link-button">Have an account? Login</button>
-        </Link>
+        <Title level={5} style={{ textAlign: "center" }}>
+          Have an account? <Link to="/login">Login</Link>
+        </Title>
       </div>
     </div>
   );

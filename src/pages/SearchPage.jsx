@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { RecipeCard } from "../components/RecipeCard";
 import { searchRecipe } from "../services/endpoints/recipes";
 import "./SearchPage.css";
+import { Button, Result } from "antd";
 export const SearchPage = () => {
     const [recipes, setRecipes] = useState([]);
     const {query} = useParams();
@@ -30,10 +31,14 @@ export const SearchPage = () => {
     }
     return (
         <div>
-            <div className="recipe-list-container">
+            <div  className="error-container">
                 {isRecipeFound ? recipes.map((recipe, index) => (
                 <RecipeCard recipe={recipe}  key={index} />
-                )) : <h1 className="error-text">No Recipe found with name {query} ! </h1>}
+                )) : <Result status="404" 
+                             title="Recipes not found"
+                             subTitle = {"No recipes Found with name " + query}
+                             extra = {<Link to="/home"><Button type="primary">Back Home</Button></Link>}
+                             ></Result>}
             </div>
         </div>
     )

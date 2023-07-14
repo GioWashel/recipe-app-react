@@ -1,0 +1,29 @@
+.login-register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.auth-form-container {
+  max-width: 400px;
+  padding: 70px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.top-h1 {
+  margin-bottom: 30px;
+  color: #1890ff;
+}
+
+#username-2 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.login-button {
+  width: 100%;
+  max-width: 200px;
+}

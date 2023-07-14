@@ -1,9 +1,8 @@
-import { useNavigate} from "react-router-dom";
 import { addToFavorites} from "../services/endpoints/recipes";
-import "./FavoriteButton.css";
-import {FaHeart} from "react-icons/fa";
+import { HeartOutlined, HeartFilled } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { isFav } from "../services/utils/isFav";
+import { Alert, Button } from "antd";
 export const FavoriteButton = ({slug}) => {
   const [isFavorite, setIsFavorite] = useState();
 
@@ -23,11 +22,19 @@ export const FavoriteButton = ({slug}) => {
     }
   };
   return (
-   <button
-      className={`fav-btn ${isFavorite ? 'active' : ''}`}
-      onClick={handleClickFavorite}
-    >
-      <FaHeart className={`heart-icon ${isFavorite ? 'active' : ''}`} />
-    </button>
+    <> 
+      <Button
+          type="primary"
+          shape="circle"
+          icon={isFavorite ? <HeartFilled /> : <HeartOutlined />}
+          onClick={handleClickFavorite}
+      />
+    </> 
+  //  <button
+  //     className={`fav-btn ${isFavorite ? 'active' : ''}`}
+  //     onClick={handleClickFavorite}
+  //   >
+  //     <FaHeart className={`heart-icon ${isFavorite ? 'active' : ''}`} />
+  //   </button>
   );
 };
