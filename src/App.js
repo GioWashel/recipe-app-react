@@ -48,6 +48,7 @@ function App() {
       if(!isAuthenticated) {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
+        delete api.defaults.headers.common["Authorization"]
         setAccessToken(null);
         setRefreshToken(null);
         setAuthenticated(false);
@@ -78,7 +79,7 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/profile" element={authenticated ? <Profile /> : <Login />}></Route>
         <Route path={`/recipe/:slug`} element={authenticated ? <DetailPage /> : <Login /> }></Route>
-        <Route path={`/explore/:page?`}  element={authenticated ? <ExplorePage /> : <Login /> }></Route>
+        <Route path={`/explore/:page?`}  element={<ExplorePage />}></Route>
         <Route path="/create" element={authenticated ? <Create tags={tags}/> : <Login /> }></Route>
         <Route path={`/search/:query`} element={ authenticated ? <SearchPage /> : <Login />} ></Route>
       </Routes>
