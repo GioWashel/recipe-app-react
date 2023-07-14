@@ -97,3 +97,9 @@
 .rec:hover {
   background-color: #e1e1e1;
 }
+
+.title-time {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}

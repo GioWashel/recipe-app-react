@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./Detailpage.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Input, Form, Card, Spin, Popconfirm } from "antd";
-import { HeartOutlined, HeartFilled } from "@ant-design/icons";
+import { HeartOutlined, HeartFilled ,ClockCircleOutlined } from "@ant-design/icons";
 import {
   deleteRecipe,
   fetchRecipeDetail,
@@ -40,10 +40,10 @@ export const DetailPage = () => {
   if (!recipe) {
     return (
       <>
-      <div className="recipe-container">
-          <Spin spinning={!recipe}/>
-     </div>
-     </>
+        <div className="recipe-container">
+          <Spin spinning={!recipe} />
+        </div>
+      </>
     );
   }
 
@@ -147,7 +147,13 @@ export const DetailPage = () => {
             ) : (
               <>
                 <div className="title-container">
-                  <h2 className="title">{recipe.title}</h2>
+                  <div className="title-time">
+                    <h2 className="title">{recipe.title}</h2>
+                     <div className="time-info">
+                      <ClockCircleOutlined />
+                      <span className="prep-time">{recipe.prep_time}mn</span>
+                    </div>
+                  </div>
                   <FavoriteButton slug={recipe.slug} />
                 </div>
                 <div className="serving">
@@ -170,20 +176,16 @@ export const DetailPage = () => {
                 <Button type="primary" onClick={handleIsEditing}>
                   Edit
                 </Button>
-                <Popconfirm 
+                <Popconfirm
                   title="Delete Recipe"
-                  description = "Are you sure to delete this recipe ?"
+                  description="Are you sure to delete this recipe ?"
                   onConfirm={handleClickDelete}
-                  okText = "Delete"
-                  cancelText = "Cancel"
-                  >
-                <Button
-                  type="primary"
-                  danger
-                  style={{ marginLeft: "5px" }}
+                  okText="Delete"
+                  cancelText="Cancel"
                 >
-                  Delete
-                </Button>
+                  <Button type="primary" danger style={{ marginLeft: "5px" }}>
+                    Delete
+                  </Button>
                 </Popconfirm>
               </div>
             )}
