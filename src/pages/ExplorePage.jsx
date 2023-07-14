@@ -21,7 +21,11 @@ export const ExplorePage = ({ setRecipe }) => {
         setRecipes(recipesData.results);
       } catch (error) {
 
+        if(error.response.status === 404){
+            navigate("/404");
+        }
         console.error("Error fetching data", error);
+
       }
     };
     fetchData();
