@@ -1,15 +1,16 @@
 import React from "react";
 import "./HomePage.css";
 import { Login } from "./Login";
-
 import { SearchBar } from "./SearchBar";
 import { Welcome } from "../components/Welcome";
+import { Typography } from 'antd';
+const { Title } = Typography;
 export const Home = ({authenticated}) => {
   return (
     <div className="home">
       <div>
-        <h1>So, what are you planning to eat?</h1>
-        <h1>We have got you covered!</h1>
+        <Title>So, what are you planning to eat?</Title>
+        <Title level={2}>We have got you covered!</Title>
         {authenticated && <SearchBar /> }
       </div>
       <div>

@@ -1,99 +1,91 @@
+.create-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .create-page {
-
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-
-#test-button {
-    position: absolute;
-    top: 20%;
-    left: 30%;
-    z-index: 2;
-}
 
 .create-form {
-    
-    display: flex;
-    padding-top: 20%;
-    padding-left: 13%;
-    padding-bottom: 2rem;
-    flex-direction: column;
-    width: 65%;
-    /* margin-left: 15%; */
-    position: static;
-    top: 30vh;
-    gap: 2rem;
+  margin-top: 20px;
+}
 
-
+.create-form .ant-typography {
+  margin-bottom: 30px;
 }
 
 .small-inputs {
-    display: flex;
-    gap: 5rem;
-    /* max-height: 15vw; */
-}
-.left-side input{
-    display: block;
-    width: 20vw;
-    padding: .3rem 1.3rem;
-    font-size: 1rem;
+  display: flex;
+  gap: 5rem;
 }
 
-.tags-container ul {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin: .8rem;
-    height: 14rem;
-
+.left-side input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
 }
 
-.tags-container li {
-    list-style: none;
-    padding-bottom: .8rem;
-    padding-right: 2rem;
+.tags-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
 }
 
-.tags-container label {
-    padding-left: .4rem;
+.tags-container .ant-typography {
+  margin-bottom: 10px;
+}
+
+.tags-container .ant-checkbox-group-item {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.tags-container .ant-checkbox-wrapper {
+  margin-right: 8px;
+}
+
+.tags-container .ant-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .create-input {
-    padding: 8px;
-    margin-bottom: 1rem;
-    border: 0;
-    border-radius: 10px;
-    box-shadow: 0 0 5px var(--tigers-eye)
-}
-
-.create-input:hover {
-    box-shadow: 0 0 1rem var(--tigers-eye);
+  padding: 12px;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
 .create-textarea {
-    padding: 10px;
-    height: 20vh;
-    margin: 0;
-    resize: none;
-    border-radius: 10px;
-    
+  padding: 12px;
+  height: 150px;
+  margin-bottom: 1rem;
+  resize: vertical;
+  width: 100%;
 }
 
-.create-page label {
-    display: inline;
+.error-message {
+  color: red;
+  margin-bottom: 10px;
 }
 
 .recipe-submit-button {
-    border: none;
-    border-radius: 20px;
-    background-color: white;
-    padding: .4rem 1.4rem;
-    width: max-content;
-    font-size: 1.1rem;
-    margin-left: 8px;
-    
+  width: 100%;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: 0;
 }
 
-.recipe-submit-button:hover {
-    cursor: pointer;
+@media (max-width: 768px) {
+  .create-page {
+    padding: 20px;
+  }
 }

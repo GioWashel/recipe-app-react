@@ -1,160 +1,143 @@
-import {  useState } from "react";
-import "./Createpage.css";
+import { useState } from "react";
+import { Form, Input, Checkbox, Button, Typography, message } from "antd";
 import { createRecipe } from "../services/endpoints/recipes";
 import { useNavigate } from "react-router-dom";
+import "./Createpage.css";
+const { Title } = Typography;
 
 export const Create = ({ tags }) => {
-  const [formData, setFormData] = useState({
-    title: "",
-    tags: [],
-    ingredients: "",
-    servings: "",
-    prep_time: "",
-    instructions: "",
-    custom_tags: "",
-    recipe_image: "",
-  });
-  const [errorMessage, setErrorMessage] = useState([]);
+  const [form] = Form.useForm();
   const navigate = useNavigate();
-  async function handleSubmit(e) {
-    e.preventDefault();
-    // if formData.custom_tags is undefined or is equal to an empty string then delete it
-    if (!formData.custom_tags) {
-      // delete doesn't throw an error even if the key is not defined in the object
-      delete formData.custom_tags;
-    }
-    if (!formData.recipe_image) {
-      delete formData.recipe_image;
-    }
+  const [errorMessage, setErrorMessage] = useState([]);
+
+  const handleSubmit = async (values) => {
     try {
-      console.log(formData);
-      await createRecipe(formData);
-      setErrorMessage(["Recipe Created !"]);
-      navigate("/profile/");
+      await createRecipe(values);
+      message.success("Recipe Created!");
+      navigate("/profile");
     } catch (error) {
-      const response = error.response;
-      if (response && response.data) {
-        let errorMessage = [];
-        for (let field in response.data) {
-          try {
-          const fieldErrors = response.data[field];
-          const errorMessages = fieldErrors.map((errorM) => `${field}: ${errorM}`);
-          errorMessage.push(errorMessages);
-          }catch {
-            errorMessage.push("Error occured !");
-            break;
-          }
-        }
-        setErrorMessage(errorMessage);
+      if (error.response && error.response.data) {
+        const errors = Object.values(error.response.data).flat();
+        setErrorMessage(errors);
+      } else {
+        setErrorMessage(["An error occurred."]);
       }
     }
-  }
-
-  function handleChange(e) {
-    const newData = { ...formData, [e.target.name]: e.target.value };
-    // console.log('this is the new data', newData);
-    setFormData(newData);
-    // console.log(formData);
-  }
-
-  function addTags(id) {
-    const tagsCopy = formData.tags.slice();
-    const index = tagsCopy.indexOf(id);
-    if (index > -1) {
-      tagsCopy.splice(index, 1);
-    } else {
-      tagsCopy.push(id);
-    }
-    setFormData({ ...formData, tags: tagsCopy });
-  }
+  }; 
+   const handleTagChange = (checkedValues) => {
+    form.setFieldsValue({ tags: checkedValues });
+  };
 
   return (
-    <div className="create-page">
-      <div className="create-background"></div>
-      {/* <button id="test-button" onClick={e => createRecipe(e)}>post test</button> */}
-      <form className="create-form" onSubmit={(e) => handleSubmit(e)}>
-        <div className="small-inputs">
-          <div className="left-side">
-            <input
-              className="create-input"
-              placeholder="title"
-              name="title"
-              value={formData.title}
-              onInput={(e) => handleChange(e)}
-            ></input>
+    <div className="create-container">
+      <div className="create-page">
+        <Form form={form} className="create-form" onFinish={handleSubmit}>
+          <Title level={2}>Add Recipe</Title>
 
-            <input
-              className="create-input"
-              placeholder="image url"
-              name="recipe_image"
-              onChange={handleChange}
-            ></input>
+          <div className="small-inputs">
+            <div className="left-side">
+              <Form.Item
+                name="title"
+                rules={[{ required: true, message: "Please enter a title" }]}
+              >
+                <Input placeholder="Title" className="create-input" />
+              </Form.Item>
 
-            <input
-              className="create-input"
-              placeholder="custom tags"
-              name="custom_tags"
-              value={formData.custom_tags}
-              onChange={handleChange}
-            ></input>
+              <Form.Item name="recipe_image">
+                <Input placeholder="Image URL" className="create-input" />
+              </Form.Item>
 
-            <input
-              className="create-input"
-              placeholder="servings"
-              type="number"
-              name="servings"
-              value={formData.servings}
-              onChange={handleChange}
-            ></input>
+              <Form.Item name="custom_tags">
+                <Input placeholder="Custom Tags" className="create-input" />
+              </Form.Item>
 
-            <input
-              className="create-input"
-              placeholder="prep-time"
-              type="number"
-              name="prep_time"
-              value={formData.prep_time}
-              onChange={handleChange}
-            ></input>
+              <Form.Item
+                name="servings"
+                rules={[{ required: true, message: "Please enter servings" }]}
+              >
+                <Input
+                  type="number"
+                  placeholder="Servings"
+                  className="create-input"
+                />
+              </Form.Item>
+
+              <Form.Item
+                name="prep_time"
+                rules={[{ required: true, message: "Please enter prep time" }]}
+              >
+                <Input
+                  type="number"
+                  placeholder="Prep Time"
+                  className="create-input"
+                />
+              </Form.Item>
+            </div>
+
+            <div className="tags-container">
+              <Title level={4}>Tags</Title>
+              <Form.Item
+                name="tags"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select at least one tag",
+                  },
+                ]}
+              >
+                <Checkbox.Group onChange={handleTagChange}>
+                  {tags.map((tag) => (
+                    <Checkbox key={tag.id} value={tag.id}>
+                      {tag.name}
+                    </Checkbox>
+                  ))}
+                </Checkbox.Group>
+              </Form.Item>
+            </div>
           </div>
 
-          <div className="tags-container">
-            <ul>
-              {tags.map((tag) => (
-                <li key={tag.id}>
-                  <input
-                    type="checkbox"
-                    id={tag.id}
-                    onChange={() => addTags(tag.id)}
-                  ></input>
-                  <label htmlFor={tag.id}>{tag.name}</label>
-                </li>
+
+          <Form.Item
+            name="ingredients"
+            rules={[{ required: true, message: "Please enter ingredients" }]}
+          >
+            <Input.TextArea
+              placeholder="Ingredients"
+              rows={4}
+              className="create-textarea"
+            />
+          </Form.Item>
+
+          <Form.Item
+            name="instructions"
+            rules={[{ required: true, message: "Please enter instructions" }]}
+          >
+            <Input.TextArea
+              placeholder="Instructions"
+              rows={4}
+              className="create-textarea"
+            />
+          </Form.Item>
+
+          {errorMessage.length > 0 && (
+            <div className="error-message">
+              {errorMessage.map((message, index) => (
+                <p key={index}>{message}</p>
               ))}
-            </ul>
-          </div>
-        </div>
+            </div>
+          )}
 
-        <textarea
-          placeholder="ingredients"
-          className="create-textarea"
-          name="ingredients"
-          value={formData.ingredients}
-          onChange={handleChange}
-        ></textarea>
-
-        <textarea
-          placeholder="instructions"
-          className="create-textarea"
-          name="instructions"
-          value={formData.instructions}
-          onChange={handleChange}
-        ></textarea>
-        {errorMessage.map((message, index) => (
-          <div key={index}>{message}</div>
-        ))}
-        <button className="recipe-submit-button" type="submit">
-          Create Recipe
-        </button>
-      </form>
+          <Form.Item>
+            <Button
+              type="primary"
+              className="recipe-submit-button"
+              htmlType="submit"
+            >
+              Create Recipe
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,21 @@
-import { useEffect, useState } from "react";
-import "./ProfilePage.css";
-import { FaMailBulk } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import { Card, Typography, Button, Avatar, Tabs, Result } from "antd";
+import {
+  UserOutlined,
+  MailOutlined,
+  HeartOutlined,
+  FileDoneOutlined,
+  ClockCircleOutlined,
+  QuestionOutlined
+} from "@ant-design/icons";
+import { Link } from "react-router-dom";
 import { getHistory, getProfile } from "../services/endpoints/users";
 import { RecipeCard } from "../components/RecipeCard";
-import { Link } from "react-router-dom";
 import { getFavorites } from "../services/endpoints/recipes";
+import "./ProfilePage.css";
+
+const { Title } = Typography;
+const { TabPane } = Tabs;
 
 export const Profile = () => {
   const [userHistory, setUserHistory] = useState([]);
@@ -13,6 +23,7 @@ export const Profile = () => {
   const [userRecipes, setUserRecipes] = useState([]);
   const [userFav, setUserFav] = useState([]);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchDetails = async () => {
       try {
@@ -23,77 +34,122 @@ export const Profile = () => {
         console.error(e);
       }
     };
-    fetchDetails();
+
     const fetchFav = async () => {
       try {
         const response = await getFavorites();
         const recipes = await response;
         setUserFav(recipes);
-      }catch(error){
+      } catch (error) {
         console.error(error);
       }
-    }
-    fetchFav();
+    };
+
     const fetchHistory = async () => {
       try {
         const history = await getHistory();
         if (history.data) {
           setUserHistory(history.data);
         } else {
-          setUserHistory(["no history"]);
+          setUserHistory(null);
         }
       } catch (error) {
         console.error(error);
       }
     };
 
+    fetchDetails();
+    fetchFav();
     fetchHistory();
     setLoading(false);
+    console.log(userHistory);
   }, []);
 
   if (loading) {
     return <div></div>;
   }
+
   return (
     <div className="profile-page">
       <div className="profile-info">
-        <div className="profile-pic-container"></div>
+        <Avatar
+          className="profile-pic-container"
+          size={200}
+          src="https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE="
+        />
         <div className="user">
           <div className="name">
-            <FaUser className="icon" id="user-icon" />
+            <UserOutlined className="icon" />
             <span className="span">{userProfile.username}</span>
           </div>
           <div className="email">
-            <FaMailBulk className="icon" id="mail-icon" />{" "}
-            <span>{userProfile.email}</span>
+            <MailOutlined className="icon" /> <span>{userProfile.email}</span>
           </div>
         </div>
       </div>
 
-      <div className="saved-recipes">
-        <div className="message">
-          <h3>Your recipes will apear here :</h3>
-          <Link to="/explore">
-            {" "}
-            <button className="to-recipes">Explore recipes</button>{" "}
-          </Link>
-        </div>
-        <div className="myrecipe-list-container">
-          {userRecipes.map((recipe, index) => {
-            return <RecipeCard key={index} recipe={recipe} />;
-          })}
-        </div>
-      </div>
-      <div className="saved-recipes">
-        <div className="message">
-          <h3>Your Favorite recipes will apear here :</h3>
-        </div>
-        <div className="myrecipe-list-container">
-          {userFav.map((recipe, index) => {
-            return <RecipeCard key={index} recipe={recipe} />;
-          })}
-        </div>
-      </div>
+      <Tabs defaultActiveKey="1">
+        <TabPane
+          tab={
+            <span>
+              <FileDoneOutlined />
+              Created Recipes
+            </span>
+          }
+          key="1"
+        >
+          <div className="saved-recipes">
+            <div className="myrecipe-list-container">
+              {userRecipes.map((recipe, index) => (
+                <RecipeCard key={index} recipe={recipe} />
+              ))}
+            </div>
+          </div>
+        </TabPane>
+        <TabPane
+          tab={
+            <span>
+              <HeartOutlined />
+              Favorite Recipes
+            </span>
+          }
+          key="2"
+        >
+          <div className="saved-recipes">
+            <div className="myrecipe-list-container">
+              {userFav.map((recipe, index) => (
+                <RecipeCard key={index} recipe={recipe} />
+              ))}
+            </div>
+          </div>
+        </TabPane>
+        <TabPane
+          tab={
+            <span>
+              <ClockCircleOutlined />
+              Watched recipes
+            </span>
+          }
+        >
+          {userHistory ? (
+            <div className="myrecipe-list-container">
+              {userFav.map((recipe, index) => (
+                <RecipeCard key={index} recipe={recipe} />
+              ))}
+            </div>
+          ) : (
+            <Result
+              icon={<QuestionOutlined style={{color : "#f8aa17"}} />}
+              title="No history Found, Start Exploring recipes !"
+              extra={
+                <Link to="/explore/">
+                  <Button type="primary">Explore</Button>
+                </Link>
+              }
+            ></Result>
+          )}
+        </TabPane>
+      </Tabs>
     </div>
   );
 };

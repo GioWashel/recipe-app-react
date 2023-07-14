@@ -1,70 +1,90 @@
 .profile-page {
-  padding: 10%;
+  padding: 3% 10%;
 }
 
 .profile-info {
   display: flex;
+  align-items: center;
   gap: 35px;
+  margin-bottom: 2rem;
 }
 
 .profile-pic-container {
-  background-image: url("https://media.istockphoto.com/id/1130884625/vector/user-member-vector-icon-for-ui-user-interface-or-profile-face-avatar-app-in-circle-design.jpg?s=612x612&w=0&k=20&c=1ky-gNHiS2iyLsUPQkxAtPBWH1BZt0PKBB1WBtxQJRE=");
-  width: 10rem;
-  height: 10rem;
-  background-position: 45% 40%;
   border-radius: 50%;
-  background-size: cover;
-  box-shadow: 1.5px 1.5px 10px rgba(0, 0, 0, 0.247),
-    -1px 1.5px 10px rgba(0, 0, 0, 0.212);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .user {
   align-self: center;
 }
 
-.name {
+.name,
+.email {
+  display: flex;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
-.profile-page span {
-  color: white;
-}
-
 .icon {
-  color: rgb(146, 255, 219);
-  padding-right: 0.8rem;
+  margin-right: 8px;
 }
 
 .saved-recipes {
-  width: 100%;
-  padding-top: 4rem;
-  background-color: rgba(6, 179, 29, 0);
+  margin-top: 2rem;
 }
 
 .message {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-.message > span {
-  /* color: green; */
-  display: block;
-  align-self: center;
+.myrecipe-list-container {
+    display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+
+.recipe-card {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.recipe-card .ant-card-body {
+  padding: 1rem;
+}
+
+.recipe-card .ant-card-meta-title {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.recipe-card .ant-card-meta-description {
+  color: #999999;
 }
 
 .to-recipes {
-  display: block;
-  background-color: rgba(240, 248, 255, 0);
-  border-radius: 30px;
-  padding: 10px 15px;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #1890ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
 }
 
-.recipe-card {
-  box-sizing: content-box;
-  margin: 2% auto;
-  width: 100%;
-  min-height: 30px;
-  background-color: aliceblue;
-  /* padding: 0px 30px; */
+.to-recipes:hover {
+  background-color: #40a9ff;
+}
+
+.ant-tabs-nav .ant-tabs-tab {
+  display: flex;
+  align-items: center;
+}
+
+.ant-tabs-tab .anticon {
+  margin-right: 8px;
 }

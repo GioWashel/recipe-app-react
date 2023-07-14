@@ -3,15 +3,15 @@ import { RecipeCard } from "../components/RecipeCard";
 import "./ExplorePage.css";
 import { Link, useParams } from "react-router-dom";
 import { fetchRecipes } from "../services/endpoints/recipes";
-//im thinking for the explore page we can display a bunch of cards, and when the user clicks on that card it will direct them to the
-//detail page for that card -gio
-
-//a card only holds the name and image
+import { Button } from "antd";
+import { Typography } from 'antd';
+const { Title } = Typography;
 export const ExplorePage = ({ setRecipe }) => {
   const { page = "1" } = useParams();
   const [recipes, setRecipes] = useState([]);
   const [prev, setPrev] = useState(null);
   const [next, setNext] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,22 +25,35 @@ export const ExplorePage = ({ setRecipe }) => {
     };
     fetchData();
   }, [page]);
+
   return (
     <div className="wrapper">
+      <Title>Discover all recipes here !</Title>
+        
       <div className="recipe-list-container">
         {recipes.map((recipe, index) => (
-          <RecipeCard recipe={recipe}  key={index} />
+          <RecipeCard recipe={recipe} key={index} />
         ))}
       </div>
-      <div className="next-prev"> 
-          {prev && (
-            <Link to={"/explore/" + (parseInt(page) - 1).toString()}>
-              <button className="next-prev-button">Prev</button>
-            </Link>
-          )}{" "}
-          {next && <Link to={"/explore/" + (parseInt(page) + 1).toString()}>
-            <button className="next-prev-button">Next</button>
-            </Link>}
+      <div className="next-prev">
+        <Link to={`/explore/${parseInt(page) - 1}`}>
+          <Button
+            className="pagination-button"
+            type="primary"
+            disabled={!prev} // Disable button if there is no previous page
+          >
+            Prev
+          </Button>
+        </Link>
+        <Link to={`/explore/${parseInt(page) + 1}`}>
+          <Button
+            className="pagination-button"
+            type="primary"
+            disabled={!next} // Disable button if there is no next page
+          >
+            Next
+          </Button>
+        </Link>
       </div>
     </div>
   );

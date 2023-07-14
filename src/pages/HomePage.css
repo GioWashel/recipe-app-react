@@ -1,10 +1,6 @@
 .home {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
-  height: 100vh;
 }
 
-.home h1 {
-  color: azure;
-}

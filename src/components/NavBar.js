@@ -1,74 +1,72 @@
 import React from "react";
-import logo from "./first-color-logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import { Input, Button, Menu } from "antd";
+import logoImage from "./first-color-logo.png";
+import {
+  HomeOutlined,
+  CompassOutlined,
+  UserOutlined,
+  PlusCircleOutlined,
+  LogoutOutlined,
+} from "@ant-design/icons";
 import "./NavBar.css";
-import { Login } from "../pages/Login";
 
-
-export const NavBar = ({authenticated}) => {
+export const NavBar = ({ authenticated }) => {
   const navigate = useNavigate();
-  function logout() {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
-    navigate('/home');
+  //css
+  const menuStyle = {
+    display: "flex",
   };
-  function profile() {
-    navigate("/profile");
+  const profileItemStyle = {
+    marginLeft: "auto",
+    display: 'flex',
+  alignItems: 'center',
+  };
+  const logoTextStyle = {
+    fontSize: "18px",
+    fontWeight: "bold",
+  };
+  // logout function
+  function logout() {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    navigate("/home");
   }
   return (
-    <>
-      <div className="navbar-container">
-        <div className="logo-container">
-          <img id="logo" src={logo} alt="logo" />
-        </div>
-        <div className="container-input">
-          <input type="text" placeholder="Search" name="text" className="input" />
-          <svg
-            fill="#ae6d1b" /* --tigers-eye */
-            width="20px"
-            height="20px"
-            viewBox="0 0 1920 1920"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M790.588 1468.235c-373.722 0-677.647-303.924-677.647-677.647 0-373.722 303.925-677.647 677.647-677.647 373.723 0 677.647 303.925 677.647 677.647 0 373.723-303.924 677.647-677.647 677.647Zm596.781-160.715c120.396-138.692 193.807-319.285 193.807-516.932C1581.176 354.748 1226.428 0 790.588 0S0 354.748 0 790.588s354.748 790.588 790.588 790.588c197.647 0 378.24-73.411 516.932-193.807l516.028 516.142 79.963-79.963-516.142-516.028Z"
-              fillRule="evenodd"
-            ></path>
-          </svg>
-        </div>
+    <Menu mode="horizontal" theme="light" style={menuStyle}>
+      <Menu.Item key="logo" style={{ marginRight: "0" }}>
+        <Link to="/">
+          <img
+            src={logoImage}
+            alt="Logo"
+            style={{ height: "32px", marginRight: "8px"}}
+          />
+          <span style={logoTextStyle}>Recipe App</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Item key="home" icon={<HomeOutlined />}>
+        <Link to="/">Home</Link>
+      </Menu.Item>
+      <Menu.Item key="explore" icon={<CompassOutlined />}>
+        <Link to="/explore">explore</Link>
+      </Menu.Item>
+      <Menu.Item key="create" icon={<PlusCircleOutlined />}>
+        <Link to="/create">create</Link>
+      </Menu.Item>
 
-        <nav>
-          <ul className="nav-links">
-            <li>
-              <Link to="/home" id="home-link" className="links">
-                Home
-              </Link>{" "}
-            </li>
-            <li>
-              <Link to="/explore/" id="explore-link" className="links">
-                Explore
-              </Link>{" "}
-            </li>
-            <li>
-              {" "}
-              <Link to="/create" id="create-link" className="links">
-                Create
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        {authenticated && (
-          <div className="btn-group">
-            <button className="fnc-button" onClick={profile}>
-              profile
-            </button>
-            <button className="fnc-button" onClick={logout}>
-              logout
-            </button>
-          </div>
-        )}
-      </div>
-    </>
+      <Menu.Item key="profile" icon={<UserOutlined />}>
+        <Link to="/profile">Profile</Link>
+      </Menu.Item>
+      {authenticated && (
+        <Menu.Item
+          key="logout"
+          icon={<LogoutOutlined />}
+          style={profileItemStyle}
+          onClick={logout}
+        >
+          Logout
+        </Menu.Item>
+      )}
+    </Menu>
   );
 };
