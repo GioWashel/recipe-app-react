@@ -32,6 +32,7 @@ export const DetailPage = () => {
         setRecommendations(fetchRecipe["similar_recipes"].slice(0, 4));
       } catch (error) {
         console.error("Error fetching data ", error);
+        navigate("/404");
       }
     };
     fetchData();

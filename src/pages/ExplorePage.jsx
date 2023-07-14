@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { RecipeCard } from "../components/RecipeCard";
 import "./ExplorePage.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { fetchRecipes } from "../services/endpoints/recipes";
 import { Button } from "antd";
-import { Typography } from 'antd';
+import { Typography } from "antd";
 const { Title } = Typography;
 export const ExplorePage = ({ setRecipe }) => {
   const { page = "1" } = useParams();
   const [recipes, setRecipes] = useState([]);
   const [prev, setPrev] = useState(null);
   const [next, setNext] = useState(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,6 +21,7 @@ export const ExplorePage = ({ setRecipe }) => {
         setRecipes(recipesData.results);
       } catch (error) {
         console.error("Error fetching data", error);
+        navigate("/404");
       }
     };
     fetchData();
@@ -29,7 +30,7 @@ export const ExplorePage = ({ setRecipe }) => {
   return (
     <div className="wrapper">
       <Title>Discover all recipes here !</Title>
-        
+
       <div className="recipe-list-container">
         {recipes.map((recipe, index) => (
           <RecipeCard recipe={recipe} key={index} />
