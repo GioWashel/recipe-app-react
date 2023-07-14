@@ -7,7 +7,7 @@ import { Welcome } from "../components/Welcome";
 export const Home = ({authenticated}) => {
   return (
     <div className="home">
-      <div>
+      <div className="intro">
         <h1>So, what are you planning to eat?</h1>
         <h1>We have got you covered!</h1>
         {authenticated && <SearchBar /> }

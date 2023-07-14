@@ -41,15 +41,25 @@
   justify-content: center;
   align-items: center;
   border-radius: 14px;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   height: 4vw;
   width: 5vw;
+  min-width: 3rem;
+  min-height: 3rem;
   margin: 1vw 0 0 1vw;
+  flex-shrink: 0;
+  flex-basis: content;
+  /* flex-basis: 4rem; */
+
 }
 
 #logo {
+  flex-shrink: 0;
   height: 3vw;
-  margin-bottom: 0.4vw;
+  min-height: 3.1rem;
+  margin: 0.5vw auto;
+  width: 85%;
+  /* min-width: 3.8rem; */
 }
 
 .links {
@@ -130,4 +140,36 @@ nav.nav-links-container {
 .fnc-button:hover {
   cursor: pointer;
   opacity: 1;
+}
+
+@media screen and (max-width: 600px) {
+
+  .navbar-container {
+    gap: unset;
+    justify-content: center;
+    
+  }
+
+  .container-input {
+    display: none;
+  }
+
+  .logo-container {
+    display: none;
+
+  }
+
+  nav.nav-links-container {
+    margin-left: unset;
+  }
+
+  .btn-group {
+    display: none;
+  }
+
+  .nav-links {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: inherit auto;
+  }
 }

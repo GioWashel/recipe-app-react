@@ -9,6 +9,7 @@
   height: 2.5rem;
   box-shadow: 0 0 5px var(--tigers-eye);
   transition: box-shadow 0.3s ease;
+  box-sizing: border-box;
 }
 
 .search-wrapper:hover,
