@@ -48,11 +48,7 @@ export const Profile = () => {
     const fetchHistory = async () => {
       try {
         const history = await getHistory();
-        if (history.data) {
-          setUserHistory(history.data);
-        } else {
-          setUserHistory(null);
-        }
+        if (history) setUserHistory(history);
       } catch (error) {
         console.error(error);
       }
@@ -62,7 +58,6 @@ export const Profile = () => {
     fetchFav();
     fetchHistory();
     setLoading(false);
-    console.log(userHistory);
   }, []);
 
   if (loading) {
@@ -133,7 +128,7 @@ export const Profile = () => {
         >
           {userHistory ? (
             <div className="myrecipe-list-container">
-              {userFav.map((recipe, index) => (
+              {userHistory.map((recipe, index) => (
                 <RecipeCard key={index} recipe={recipe} />
               ))}
             </div>
