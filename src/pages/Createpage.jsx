@@ -23,8 +23,8 @@ export const Create = ({ tags }) => {
         setErrorMessage(["An error occurred."]);
       }
     }
-  }; 
-   const handleTagChange = (checkedValues) => {
+  };
+  const handleTagChange = (checkedValues) => {
     form.setFieldsValue({ tags: checkedValues });
   };
 
@@ -55,27 +55,18 @@ export const Create = ({ tags }) => {
                 name="servings"
                 rules={[{ required: true, message: "Please enter servings" }]}
               >
-                <Input
-                  type="number"
-                  placeholder="Servings"
-                  className="create-input"
-                />
+                <Input type="number" placeholder="Servings" className="create-input" />
               </Form.Item>
 
               <Form.Item
                 name="prep_time"
                 rules={[{ required: true, message: "Please enter prep time" }]}
               >
-                <Input
-                  type="number"
-                  placeholder="Prep Time"
-                  className="create-input"
-                />
+                <Input type="number" placeholder="Prep Time" className="create-input" />
               </Form.Item>
             </div>
-
             <div className="tags-container">
-              <Title level={4}>Tags</Title>
+              <Title level={4}>Tags :</Title>
               <Form.Item
                 name="tags"
                 rules={[
@@ -95,7 +86,6 @@ export const Create = ({ tags }) => {
               </Form.Item>
             </div>
           </div>
-
 
           <Form.Item
             name="ingredients"
@@ -127,12 +117,8 @@ export const Create = ({ tags }) => {
             </div>
           )}
 
-          <Form.Item>
-            <Button
-              type="primary"
-              className="recipe-submit-button"
-              htmlType="submit"
-            >
+          <Form.Item className="btn-container">
+            <Button type="primary" className="recipe-submit-button" htmlType="submit">
               Create Recipe
             </Button>
           </Form.Item>

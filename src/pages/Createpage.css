@@ -60,14 +60,12 @@
 
 .create-input {
   padding: 12px;
-  margin-bottom: 1rem;
   width: 100%;
 }
 
 .create-textarea {
   padding: 12px;
   height: 150px;
-  margin-bottom: 1rem;
   resize: vertical;
   width: 100%;
 }
@@ -79,11 +77,15 @@
 
 .recipe-submit-button {
   width: 100%;
-  max-width: 200px;
   margin-left: auto;
-  margin-right: 0;
+  padding-right: 50px;
+  padding-left: 50px;
 }
-
+.btn-container {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
 @media (max-width: 768px) {
   .create-page {
     padding: 20px;
