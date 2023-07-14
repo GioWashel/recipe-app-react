@@ -17,7 +17,6 @@ export const SearchBar = () => {
             <FaSearch id="search-icon" />
             </div>
             <input className="search-input"placeholder="Find a recipe..." type="text"
-                // onKeyDown={e => search(e, e.target.value)}  // less efficient
                 onChange={(e) => setQuery(e.target.value)}
             ></input>
         </div>
