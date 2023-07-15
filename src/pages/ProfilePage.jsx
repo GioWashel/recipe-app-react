@@ -94,11 +94,13 @@ export const Profile = () => {
           key="1"
         >
           <div className="saved-recipes">
+            {userRecipes.length ? 
             <div className="myrecipe-list-container">
               {userRecipes.map((recipe, index) => (
                 <RecipeCard key={index} recipe={recipe} />
               ))}
             </div>
+            : <Empty /> }
           </div>
         </TabPane>
         <TabPane
@@ -111,11 +113,13 @@ export const Profile = () => {
           key="2"
         >
           <div className="saved-recipes">
+            {userFav.length ? 
             <div className="myrecipe-list-container">
               {userFav.map((recipe, index) => (
                 <RecipeCard key={index} recipe={recipe} />
               ))}
             </div>
+            : <Empty />}
           </div>
         </TabPane>
         <TabPane
@@ -126,7 +130,8 @@ export const Profile = () => {
             </span>
           }
         >
-          {userHistory ? (
+          <div className="saved-recipes">
+          {userHistory.length ? (
             <div className="myrecipe-list-container">
               {userHistory.map((recipe, index) => (
                 <RecipeCard key={index} recipe={recipe} />
@@ -135,6 +140,7 @@ export const Profile = () => {
           ) : (
             <Empty />
           )}
+          </div>
         </TabPane>
       </Tabs>
     </div>
