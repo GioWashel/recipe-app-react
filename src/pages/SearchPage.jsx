@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { RecipeCard } from "../components/RecipeCard";
 import { searchRecipe } from "../services/endpoints/recipes";
 import "./SearchPage.css";
-import { Button, Result } from "antd";
+import { Button, Result, Spin } from "antd";
 export const SearchPage = () => {
     const [recipes, setRecipes] = useState([]);
     const {query} = useParams();
@@ -13,7 +13,7 @@ export const SearchPage = () => {
         const fetchData = async () => {
             try {
                 const res = await searchRecipe(query);
-                if (recipes !== []) {
+                if (res.length) {
                     setRecipes(res);
                     setIsRecipeFound(true);
                 }
@@ -26,7 +26,11 @@ export const SearchPage = () => {
     }, [])
     if(isloading){
         return(
-            <div></div>
+        <>
+            <div className="recipe-container">
+                <Spin />
+            </div>
+        </>
         )
     }
     return (
